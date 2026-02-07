@@ -386,10 +386,14 @@ const Account = () => {
     
     try {
       console.log('📦 Loading orders...');
+      const orderFilter = user.email
+        ? `user_id.eq.${user.id},customer_email.eq.${user.email}`
+        : `user_id.eq.${user.id}`;
+
       const { data, error } = await supabase
         .from('orders')
         .select('*')
-        .eq('user_id', user.id)
+        .or(orderFilter)
         .order('created_at', { ascending: false });
 
       if (abortControllers.current.orders?.signal.aborted) return;
@@ -430,11 +434,15 @@ const Account = () => {
     
     try {
       console.log('🔍 Loading order details for:', orderId);
+      const orderFilter = user.email
+        ? `user_id.eq.${user.id},customer_email.eq.${user.email}`
+        : `user_id.eq.${user.id}`;
+
       const { data, error } = await supabase
         .from('orders')
         .select('*')
         .eq('id', orderId)
-        .eq('user_id', user.id)
+        .or(orderFilter)
         .maybeSingle();
 
       if (abortControllers.current.orderDetails?.signal.aborted) return;
@@ -494,14 +502,33 @@ const Account = () => {
   useEffect(() => {
     if (!user?.id) return;
     
-    let subscription;
+    let subscriptions = [];
     let isSubscribed = true;
     let updateTimeout;
     
     const setupRealtimeUpdates = async () => {
       try {
-        subscription = supabase
-          .channel(`orders-${user.id}`, {
+        const handleOrderUpdate = async (payload) => {
+          if (!isSubscribed) return;
+          
+          console.log('📦 Order update:', payload.eventType);
+          
+          // Debounce updates - only refresh after 500ms of no changes
+          if (updateTimeout) clearTimeout(updateTimeout);
+          
+          updateTimeout = setTimeout(async () => {
+            if (isSubscribed) {
+              await loadOrders();
+              
+              if (showOrderDetails && selectedOrder && payload.new?.id === selectedOrder.id) {
+                await loadOrderDetails(selectedOrder.id);
+              }
+            }
+          }, 500);
+        };
+
+        const userChannel = supabase
+          .channel(`orders-user-${user.id}`, {
             config: {
               broadcast: { self: false }, // Don't receive own events
             }
@@ -514,30 +541,37 @@ const Account = () => {
               table: 'orders',
               filter: `user_id=eq.${user.id}`
             },
-            async (payload) => {
-              if (!isSubscribed) return;
-              
-              console.log('📦 Order update:', payload.eventType);
-              
-              // Debounce updates - only refresh after 500ms of no changes
-              if (updateTimeout) clearTimeout(updateTimeout);
-              
-              updateTimeout = setTimeout(async () => {
-                if (isSubscribed) {
-                  await loadOrders();
-                  
-                  if (showOrderDetails && selectedOrder && payload.new?.id === selectedOrder.id) {
-                    await loadOrderDetails(selectedOrder.id);
-                  }
-                }
-              }, 500);
-            }
+            handleOrderUpdate
           )
           .subscribe((status) => {
             if (status === 'SUBSCRIBED') {
               console.log('✅ Realtime connected');
             }
           });
+
+        subscriptions.push(userChannel);
+
+        if (user.email) {
+          const emailChannel = supabase
+            .channel(`orders-email-${user.id}`, {
+              config: {
+                broadcast: { self: false },
+              }
+            })
+            .on(
+              'postgres_changes',
+              {
+                event: '*',
+                schema: 'public',
+                table: 'orders',
+                filter: `customer_email=eq.${user.email}`
+              },
+              handleOrderUpdate
+            )
+            .subscribe();
+
+          subscriptions.push(emailChannel);
+        }
       } catch (error) {
         console.error('❌ Realtime error:', error);
       }
@@ -548,9 +582,9 @@ const Account = () => {
     return () => {
       isSubscribed = false;
       if (updateTimeout) clearTimeout(updateTimeout);
-      if (subscription) {
+      if (subscriptions.length > 0) {
         console.log('🔌 Disconnecting realtime');
-        supabase.removeChannel(subscription);
+        subscriptions.forEach(channel => supabase.removeChannel(channel));
       }
     };
   }, [user?.id]); // ONLY user.id - don't include showOrderDetails or selectedOrder!
