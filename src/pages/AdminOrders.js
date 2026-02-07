@@ -44,6 +44,15 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
     cancelled: 'red'
   };
 
+  const getCustomerInfo = (order) => {
+    const name = order?.customer_name || order?.customerName || order?.guest_name || order?.guestName || order?.billing_name || order?.name || 'Guest Customer';
+    const email = order?.customer_email || order?.customerEmail || order?.guest_email || order?.guestEmail || order?.billing_email || order?.email || '';
+    const phone = order?.customer_phone || order?.customerPhone || order?.guest_phone || order?.guestPhone || order?.billing_phone || order?.phone || '';
+    const isGuest = !order?.user_id && !order?.userId;
+
+    return { name, email, phone, isGuest };
+  };
+
   // Add this function
   const toggleCardExpansion = (orderId) => {
     setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
@@ -485,10 +494,12 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
   };
 
   const filteredOrders = orders.filter(order => {
-    const matchesSearch = 
-      order.customer_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer_email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (order.id && order.id.toString().includes(searchTerm));
+    const customerInfo = getCustomerInfo(order);
+    const nameMatch = customerInfo.name?.toLowerCase().includes(searchTerm.toLowerCase());
+    const emailMatch = customerInfo.email?.toLowerCase().includes(searchTerm.toLowerCase());
+    const idMatch = order.id && order.id.toString().includes(searchTerm);
+
+    const matchesSearch = nameMatch || emailMatch || idMatch;
 
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
 
@@ -704,6 +715,7 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
         {/* Mobile Cards View - Added this section */}
         <div className="mobile-orders-list">
           {filteredOrders.map(order => {
+            const customerInfo = getCustomerInfo(order);
             const affiliateInfo = getAffiliateInfo(order.referrals);
             const isUpdating = updatingOrders[order.id];
             const hasReferrals = order.referrals && order.referrals.length > 0;
@@ -750,8 +762,11 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
                   <div className="info-group customer-info-mobile">
                     <div className="info-label">Customer</div>
                     <div>
-                      <div className="customer-name">{order.customer_name}</div>
-                      <div className="customer-email">{order.customer_email}</div>
+                      <div className="customer-name">
+                        {customerInfo.name}
+                        {customerInfo.isGuest && <span className="status-badge gray">Guest</span>}
+                      </div>
+                      <div className="customer-email">{customerInfo.email || 'No email'}</div>
                     </div>
                   </div>
                   
@@ -900,6 +915,7 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
           </thead>
           <tbody>
             {filteredOrders.map(order => {
+              const customerInfo = getCustomerInfo(order);
               const affiliateInfo = getAffiliateInfo(order.referrals);
               const isUpdating = updatingOrders[order.id];
               const hasReferrals = order.referrals && order.referrals.length > 0;
@@ -929,8 +945,11 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
                   </td>
                   <td>
                     <div className="customer-info">
-                      <strong>{order.customer_name}</strong>
-                      <small>{order.customer_email}</small>
+                      <strong>
+                        {customerInfo.name}
+                        {customerInfo.isGuest && <span className="status-badge gray">Guest</span>}
+                      </strong>
+                      <small>{customerInfo.email || 'No email'}</small>
                     </div>
                   </td>
                   <td className="amount-cell">
