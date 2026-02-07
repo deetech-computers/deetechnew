@@ -622,7 +622,6 @@ const Account = () => {
     }
 
     try {
-      await supabase.auth.refreshSession();
       const sessionResponse = await supabase.auth.getSession();
       const sessionData = sessionResponse?.data;
       if (!sessionData?.session) {

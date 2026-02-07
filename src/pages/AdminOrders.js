@@ -241,7 +241,16 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
         return;
       }
 
-      setOrders(ordersData || []);
+      const normalizedOrders = (ordersData || []).map(order => ({
+        ...order,
+        referrals: Array.isArray(order.referrals)
+          ? order.referrals
+          : order.referrals
+            ? [order.referrals]
+            : []
+      }));
+
+      setOrders(normalizedOrders);
       console.log(`✅ Loaded ${ordersData?.length || 0} orders`);
 
       if (debugMode) {
@@ -325,17 +334,19 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
                 ...order, 
                 status: newStatus, 
                 updated_at: new Date().toISOString(),
-                referrals: order.referrals?.map(ref => ({
-                  ...ref,
-                  status: newStatus === 'completed'
-                    ? 'paid'
-                    : newStatus === 'cancelled'
-                      ? 'cancelled'
-                      : newStatus === 'processing' || newStatus === 'shipped' || newStatus === 'delivered'
-                        ? 'approved'
-                        : 'pending',
-                  updated_at: new Date().toISOString()
-                })) || []
+                referrals: Array.isArray(order.referrals)
+                  ? order.referrals.map(ref => ({
+                      ...ref,
+                      status: newStatus === 'completed'
+                        ? 'paid'
+                        : newStatus === 'cancelled'
+                          ? 'cancelled'
+                          : newStatus === 'processing' || newStatus === 'shipped' || newStatus === 'delivered'
+                            ? 'approved'
+                            : 'pending',
+                      updated_at: new Date().toISOString()
+                    }))
+                  : []
               }
             : order
         )

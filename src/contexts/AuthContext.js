@@ -130,6 +130,12 @@ export function AuthProvider({ children }) {
     }
 
     try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      if (!sessionData?.session) {
+        console.warn('🔐 No session available for profile sync, skipping.');
+        return;
+      }
+
       const firstName = authUser.user_metadata?.first_name || authUser.user_metadata?.firstName || '';
       const lastName = authUser.user_metadata?.last_name || authUser.user_metadata?.lastName || '';
 
@@ -290,7 +296,7 @@ export function AuthProvider({ children }) {
     initializeAuth();
 
     // Single auth state change listener - CRITICAL FIX
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (!mountedRef.current) return;
         
@@ -298,7 +304,6 @@ export function AuthProvider({ children }) {
         
         switch (event) {
           case 'SIGNED_IN':
-          case 'TOKEN_REFRESHED':
           case 'USER_UPDATED':
             if (session?.user && mountedRef.current) {
               const sameUser =
@@ -320,6 +325,12 @@ export function AuthProvider({ children }) {
 
               setIsGuest(false);
               refreshLockRef.current.cooldownUntil = 0;
+            }
+            break;
+          case 'TOKEN_REFRESHED':
+            if (session?.user && mountedRef.current) {
+              setUser(session.user);
+              setIsGuest(false);
             }
             break;
             
