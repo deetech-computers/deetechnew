@@ -283,10 +283,14 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
 
       console.log('✅ Order status updated');
 
-      // 2. Update referral status to match (trigger handles commission automatically)
+      // 2. Update referral status to match allowed values
       if (currentOrder.referrals && currentOrder.referrals.length > 0) {
         const referral = currentOrder.referrals[0];
-        const referralStatus = newStatus === 'completed' ? 'paid' : newStatus;
+        const referralStatus = newStatus === 'completed'
+          ? 'paid'
+          : newStatus === 'cancelled'
+            ? 'cancelled'
+            : (referral.status || 'pending');
         
         const { error: referralError } = await supabase
           .from('referrals')
@@ -314,7 +318,11 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
                 updated_at: new Date().toISOString(),
                 referrals: order.referrals?.map(ref => ({
                   ...ref,
-                  status: newStatus === 'completed' ? 'paid' : newStatus,
+                  status: newStatus === 'completed'
+                    ? 'paid'
+                    : newStatus === 'cancelled'
+                      ? 'cancelled'
+                      : (ref.status || 'pending'),
                   updated_at: new Date().toISOString()
                 })) || []
               }
