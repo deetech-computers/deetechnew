@@ -248,7 +248,8 @@
   border-radius: var(--admin-radius-lg);
   box-shadow: var(--admin-shadow);
   border: 1px solid var(--admin-gray-200);
-  overflow: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: var(--admin-spacing);
   animation: admin-slideUp 0.4s ease-out;
 }

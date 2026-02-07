@@ -59,6 +59,18 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
   };
 
   useEffect(() => {
+    const verifyAdminSession = async () => {
+      try {
+        const { data } = await supabase.auth.getSession();
+        if (!data?.session) {
+          showNotification('Admin session not detected. Please sign in again to view all orders.', 'warning', 6000);
+        }
+      } catch (error) {
+        console.warn('Session check failed:', error);
+      }
+    };
+
+    verifyAdminSession();
     loadOrders();
     setupRealtimeSubscription();
     
