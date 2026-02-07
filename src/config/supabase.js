@@ -18,7 +18,7 @@ if (!globalScope.__deetech_supabase) {
   globalScope.__deetech_supabase = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true,
-      autoRefreshToken: false,
+      autoRefreshToken: true,
       detectSessionInUrl: true, // FIXED: Changed from false to true
       storage: typeof window !== 'undefined' ? window.localStorage : undefined,
       storageKey: 'deetech-auth'

@@ -131,8 +131,8 @@ export function AuthProvider({ children }) {
 
     try {
       const { data: sessionData } = await supabase.auth.getSession();
-      if (!sessionData?.session) {
-        console.warn('🔐 No session available for profile sync, skipping.');
+      if (!sessionData?.session || sessionData.session.user?.id !== authUser.id) {
+        console.warn('🔐 No valid session for profile sync, skipping.');
         return;
       }
 
@@ -196,7 +196,11 @@ export function AuthProvider({ children }) {
         } catch {
           // ignore localStorage issues
         }
-      } else if (upsertError.code === '42501' || upsertError.status === 403) {
+      } else if (
+        upsertError.code === '42501' ||
+        upsertError.status === 403 ||
+        upsertError.status === 401
+      ) {
         try {
           if (typeof window !== 'undefined') {
             localStorage.setItem(syncKey, 'blocked');
@@ -376,29 +380,7 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  // Manual, throttled refresh loop (autoRefreshToken is disabled)
-  useEffect(() => {
-    if (!authInitialized) return;
-
-    const interval = setInterval(() => {
-      refreshSessionIfNeeded('interval');
-    }, REFRESH_CHECK_INTERVAL_MS);
-
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') {
-        refreshSessionIfNeeded('visibility');
-      }
-    };
-
-    window.addEventListener('visibilitychange', handleVisibility);
-    window.addEventListener('online', handleVisibility);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('online', handleVisibility);
-    };
-  }, [authInitialized, refreshSessionIfNeeded]);
+  // Manual refresh loop disabled (autoRefreshToken is enabled in Supabase client)
 
   // Sign Up - FIXED: Added proper error handling and no automatic sign-in
   const signUp = useCallback(async (email, password, userData = {}) => {
