@@ -53,6 +53,13 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
     return { name, email, phone, isGuest };
   };
 
+  const getLatestReferral = (referrals = []) => {
+    if (!Array.isArray(referrals) || referrals.length === 0) return null;
+    const validReferrals = referrals.filter(ref => ref && ref.id);
+    if (validReferrals.length === 0) return null;
+    return [...validReferrals].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))[0];
+  };
+
   // Add this function
   const toggleCardExpansion = (orderId) => {
     setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
@@ -401,7 +408,8 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
   const getReferralStatusBadge = (referrals) => {
     if (!referrals || referrals.length === 0) return null;
     
-    const ref = referrals[0];
+    const ref = getLatestReferral(referrals);
+    if (!ref) return null;
     if (!ref.status || ref.status === 'cancelled') return null;
     
     const color = statusColors[ref.status === 'paid' ? 'completed' : ref.status] || 'gray';
@@ -424,7 +432,10 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
       return { name: null, code: null, id: null };
     }
     
-    const ref = referrals[0];
+    const ref = getLatestReferral(referrals);
+    if (!ref) {
+      return { name: null, code: null, id: null };
+    }
     const totalCommission = parseFloat(ref.affiliates?.total_commission || 0);
     const pendingCommission = parseFloat(ref.affiliates?.pending_commission || 0);
     
@@ -453,7 +464,10 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
       return { display: null, amount: 0, status: 'none' };
     }
     
-    const ref = referrals[0];
+    const ref = getLatestReferral(referrals);
+    if (!ref) {
+      return { display: null, amount: 0, status: 'none' };
+    }
     
     // Don't show anything for cancelled referrals
     if (ref.status === 'cancelled') {
@@ -486,7 +500,10 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
       return { status: 'none', amount: 0, displayText: 'No commission' };
     }
     
-    const ref = referrals[0];
+    const ref = getLatestReferral(referrals);
+    if (!ref) {
+      return { status: 'none', amount: 0, displayText: 'No commission' };
+    }
     const commissionAmount = parseFloat(ref.commission_amount || 0);
     
     switch (ref.status) {
@@ -743,7 +760,7 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
             const affiliateInfo = getAffiliateInfo(order.referrals);
             const isUpdating = updatingOrders[order.id];
             const hasReferrals = order.referrals && order.referrals.length > 0;
-            const referral = hasReferrals ? order.referrals[0] : null;
+            const referral = hasReferrals ? getLatestReferral(order.referrals) : null;
             const commissionInfo = getCommissionDisplayInfo(order.referrals, order.status);
             const orderCommission = getOrderCommissionStatus(order.referrals);
             const canManuallyPay = hasReferrals && 
@@ -943,7 +960,7 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
               const affiliateInfo = getAffiliateInfo(order.referrals);
               const isUpdating = updatingOrders[order.id];
               const hasReferrals = order.referrals && order.referrals.length > 0;
-              const referral = hasReferrals ? order.referrals[0] : null;
+              const referral = hasReferrals ? getLatestReferral(order.referrals) : null;
               const commissionInfo = getCommissionDisplayInfo(order.referrals, order.status);
               const orderCommission = getOrderCommissionStatus(order.referrals);
               const canManuallyPay = hasReferrals && 
