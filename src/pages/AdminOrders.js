@@ -290,7 +290,9 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
           ? 'paid'
           : newStatus === 'cancelled'
             ? 'cancelled'
-            : (referral.status || 'pending');
+            : newStatus === 'processing' || newStatus === 'shipped' || newStatus === 'delivered'
+              ? 'approved'
+              : 'pending';
         
         const { error: referralError } = await supabase
           .from('referrals')
@@ -322,7 +324,9 @@ const AdminOrders = ({ OrderDetailsModal, ConfirmationModal }) => {
                     ? 'paid'
                     : newStatus === 'cancelled'
                       ? 'cancelled'
-                      : (ref.status || 'pending'),
+                      : newStatus === 'processing' || newStatus === 'shipped' || newStatus === 'delivered'
+                        ? 'approved'
+                        : 'pending',
                   updated_at: new Date().toISOString()
                 })) || []
               }
