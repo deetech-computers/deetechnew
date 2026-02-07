@@ -1,0 +1,417 @@
+/* ========================================
+   INPUT COMPONENT - DUAL MODE THEME
+   Using CSS Variables for Seamless Switching
+   ======================================== */
+
+/* ===== CSS VARIABLES (Theme Definitions) ===== */
+:root {
+  /* Light Mode Variables */
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-text: #111827;
+  --input-label: #374151;
+  --input-placeholder: #9ca3af;
+  --input-icon: #9ca3af;
+  --input-disabled-bg: #f3f4f6;
+  --input-disabled-border: #e5e7eb;
+  --input-disabled-text: #6b7280;
+  
+  /* Focus States */
+  --input-focus-border: #3b82f6;
+  --input-focus-shadow: rgba(59, 130, 246, 0.15);
+  
+  /* Validation States */
+  --input-error: #ef4444;
+  --input-error-shadow: rgba(239, 68, 68, 0.15);
+  --input-success: #10b981;
+  --input-success-shadow: rgba(16, 185, 129, 0.15);
+  
+  /* Helper Text */
+  --input-help-text: #6b7280;
+  
+  /* Interactive Elements */
+  --input-toggle-bg-hover: #f3f4f6;
+  --input-toggle-text-hover: #374151;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+  --input-bg: #1f2937;
+  --input-border: #4b5563;
+  --input-text: #f9fafb;
+  --input-label: #e5e7eb;
+  --input-placeholder: #9ca3af;
+  --input-icon: #9ca3af;
+  --input-disabled-bg: #374151;
+  --input-disabled-border: #4b5563;
+  --input-disabled-text: #9ca3af;
+  
+  /* Focus States */
+  --input-focus-border: #60a5fa;
+  --input-focus-shadow: rgba(96, 165, 250, 0.15);
+  
+  /* Validation States */
+  --input-error: #f87171;
+  --input-error-shadow: rgba(248, 113, 113, 0.15);
+  --input-success: #34d399;
+  --input-success-shadow: rgba(52, 211, 153, 0.15);
+  
+  /* Helper Text */
+  --input-help-text: #9ca3af;
+  
+  /* Interactive Elements */
+  --input-toggle-bg-hover: #374151;
+  --input-toggle-text-hover: #e5e7eb;
+}
+
+/* ===== BASE STYLES ===== */
+.login-input-group {
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.login-input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--input-label);
+  line-height: 1.4;
+}
+
+.login-input-required-asterisk {
+  color: var(--input-error);
+  margin-left: 4px;
+}
+
+/* ===== INPUT CONTAINER ===== */
+.login-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--input-bg);
+  transition: all 0.2s ease;
+  border: 1px solid var(--input-border);
+}
+
+.login-input-container.login-input-focused {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px var(--input-focus-shadow);
+}
+
+.login-input-container.login-input-error {
+  border-color: var(--input-error);
+}
+
+.login-input-container.login-input-error.login-input-focused {
+  border-color: var(--input-error);
+  box-shadow: 0 0 0 3px var(--input-error-shadow);
+}
+
+.login-input-container.login-input-success {
+  border-color: var(--input-success);
+}
+
+.login-input-container.login-input-success.login-input-focused {
+  border-color: var(--input-success);
+  box-shadow: 0 0 0 3px var(--input-success-shadow);
+}
+
+.login-input-container.login-input-disabled {
+  background-color: var(--input-disabled-bg);
+  border-color: var(--input-disabled-border);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ===== INPUT FIELD ===== */
+.login-input-field {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--input-text);
+  background: transparent;
+  outline: none;
+  transition: all 0.2s ease;
+  min-height: 52px;
+  font-family: inherit;
+}
+
+.login-input-field::placeholder {
+  color: var(--input-placeholder);
+  opacity: 0.8;
+}
+
+.login-input-field:disabled {
+  background: transparent;
+  cursor: not-allowed;
+  color: var(--input-disabled-text);
+}
+
+.login-input-field.login-input-with-icon {
+  padding-left: 44px;
+}
+
+.login-input-field.login-input-with-password-toggle {
+  padding-right: 44px;
+}
+
+/* ===== INPUT ICON ===== */
+.login-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--input-icon);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-input-container.login-input-focused .login-input-icon {
+  color: var(--input-focus-border);
+}
+
+.login-input-container.login-input-error .login-input-icon {
+  color: var(--input-error);
+}
+
+.login-input-container.login-input-success .login-input-icon {
+  color: var(--input-success);
+}
+
+/* ===== PASSWORD TOGGLE ===== */
+.login-input-password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--input-placeholder);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.login-input-password-toggle-btn:hover:not(:disabled) {
+  background: var(--input-toggle-bg-hover);
+  color: var(--input-toggle-text-hover);
+}
+
+.login-input-password-toggle-btn:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.login-input-password-toggle-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-input-container.login-input-focused .login-input-password-toggle-btn {
+  color: var(--input-focus-border);
+}
+
+/* ===== VALIDATION INDICATOR ===== */
+.login-input-validation-indicator {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.login-input-validation-indicator.login-input-valid .login-input-validation-icon {
+  color: var(--input-success);
+}
+
+.login-input-validation-indicator.login-input-invalid .login-input-validation-icon {
+  color: var(--input-error);
+}
+
+/* When both password toggle and validation are present */
+.login-input-field.login-input-with-password-toggle + .login-input-password-toggle-btn + .login-input-validation-indicator {
+  right: 44px;
+}
+
+/* ===== MESSAGES ===== */
+.login-input-error-message {
+  display: block;
+  margin-top: 6px;
+  color: var(--input-error);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.login-input-success-message {
+  display: block;
+  margin-top: 6px;
+  color: var(--input-success);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.login-input-validation-message {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.login-input-validation-message.login-input-valid {
+  color: var(--input-success);
+}
+
+.login-input-validation-message.login-input-invalid {
+  color: var(--input-error);
+}
+
+.login-input-help-text {
+  display: block;
+  margin-top: 6px;
+  color: var(--input-help-text);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-input-error-message,
+.login-input-success-message,
+.login-input-validation-message,
+.login-input-help-text {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ===== FOCUS STATES ===== */
+.login-input-field:focus-visible {
+  outline: 2px solid var(--input-focus-border);
+  outline-offset: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .login-input-field {
+    padding: 12px 14px;
+    min-height: 48px;
+  }
+  
+  .login-input-field.login-input-with-icon {
+    padding-left: 40px;
+  }
+  
+  .login-input-field.login-input-with-password-toggle {
+    padding-right: 40px;
+  }
+  
+  .login-input-icon {
+    left: 14px;
+  }
+  
+  .login-input-password-toggle-btn {
+    right: 10px;
+  }
+  
+  .login-input-field.login-input-with-password-toggle + .login-input-password-toggle-btn + .login-input-validation-indicator {
+    right: 40px;
+  }
+  
+  .login-input-label {
+    font-size: 14px;
+  }
+  
+  .login-input-field {
+    font-size: 14px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .login-input-password-toggle-btn {
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .login-input-field {
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+  
+  .login-input-container:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  .login-input-container,
+  .login-input-field,
+  .login-input-password-toggle-btn {
+    transition: none;
+  }
+  
+  .login-input-error-message,
+  .login-input-success-message,
+  .login-input-validation-message,
+  .login-input-help-text {
+    animation: none;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .login-input-container {
+    background: white !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .login-input-field {
+    color: black !important;
+    background: white !important;
+  }
+  
+  .login-input-password-toggle-btn {
+    display: none;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+@media (prefers-contrast: high) {
+  :root, .dark-mode {
+    --input-border: #000000;
+    --input-focus-border: #0000ff;
+    --input-error: #ff0000;
+    --input-success: #008000;
+  }
+  
+  .login-input-container {
+    border-width: 2px;
+  }
+}

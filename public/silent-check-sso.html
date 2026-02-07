@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // This page is used for silent token refresh in OAuth
+      window.addEventListener('message', function(event) {
+        if (event.data === 'supabase-auth-check') {
+          event.source.postMessage('supabase-auth-ready', '*');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Silent SSO check page -->
+  </body>
+</html>

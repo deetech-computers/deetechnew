@@ -1,0 +1,878 @@
+/* SplashScreen.css - FULLY RESPONSIVE & SCOPED */
+/* All styles are prefixed with deetech-splash- to avoid conflicts */
+
+/* Force black background only for splash - only affects body when class is present */
+.deetech-splash-body-active {
+  background: #0a0a0a !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* Main Splash Container */
+.deetech-splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #000814 100%);
+  background-size: 200% 200%;
+  animation: deetech-splash-gradient-shift 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  opacity: 1;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+@keyframes deetech-splash-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.deetech-splash-screen-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Center Container - Responsive positioning */
+.deetech-splash-center {
+  text-align: center;
+  max-width: 1200px;
+  padding: clamp(20px, 5vh, 60px) clamp(15px, 4vw, 40px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ========================================
+   EXTRA LARGE SCREENS (1440px and above)
+   ======================================== */
+@media (min-width: 1440px) {
+  .deetech-splash-center {
+    max-width: 1400px;
+    padding: 80px 50px;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 7rem !important;
+    gap: 8px !important;
+    margin-bottom: 30px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 1.8rem !important;
+    letter-spacing: 8px !important;
+    margin-top: 25px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 70px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 18px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* ========================================
+   LARGE DESKTOPS (1200px - 1439px)
+   ======================================== */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .deetech-splash-center {
+    max-width: 1100px;
+    padding: 70px 40px;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 6rem !important;
+    gap: 7px !important;
+    margin-bottom: 25px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 1.5rem !important;
+    letter-spacing: 7px !important;
+    margin-top: 22px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 60px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 16px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+/* ========================================
+   DESKTOPS (992px - 1199px)
+   ======================================== */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .deetech-splash-center {
+    max-width: 900px;
+    padding: 60px 35px;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 5rem !important;
+    gap: 6px !important;
+    margin-bottom: 22px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 1.3rem !important;
+    letter-spacing: 6px !important;
+    margin-top: 20px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 55px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 14px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+/* ========================================
+   TABLETS & SMALL DESKTOPS (768px - 991px)
+   ======================================== */
+@media (min-width: 768px) and (max-width: 991px) {
+  .deetech-splash-center {
+    max-width: 700px;
+    padding: 50px 30px;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 4rem !important;
+    gap: 5px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 1.1rem !important;
+    letter-spacing: 5px !important;
+    margin-top: 18px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 50px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 12px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 11px !important;
+    height: 11px !important;
+  }
+}
+
+/* ========================================
+   LANDSCAPE PHONES & SMALL TABLETS (576px - 767px)
+   ======================================== */
+@media (min-width: 576px) and (max-width: 767px) {
+  .deetech-splash-center {
+    max-width: 550px;
+    padding: 40px 25px;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 3.8rem !important;
+    gap: 4px !important;
+    margin-bottom: 18px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 0.95rem !important;
+    letter-spacing: 4px !important;
+    margin-top: 16px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 45px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 11px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
+/* ========================================
+   PORTRAIT PHONES (480px - 575px) - UPDATED
+   ======================================== */
+@media (min-width: 480px) and (max-width: 575px) {
+  .deetech-splash-center {
+    max-width: 450px;
+    padding: 35px 20px;
+    /* Move only 10px higher for iPhone sizes */
+    transform: translateY(-10px);
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 4.2rem !important;
+    gap: 3px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 0.9rem !important;
+    letter-spacing: 3.5px !important;
+    margin-top: 14px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 40px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 10px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 9px !important;
+    height: 9px !important;
+  }
+}
+
+/* ========================================
+   SMALL PHONES (360px - 479px) - UPDATED
+   ======================================== */
+@media (min-width: 360px) and (max-width: 479px) {
+  .deetech-splash-center {
+    max-width: 340px;
+    padding: 30px 18px;
+    /* Move only 10px higher for smaller phones */
+    transform: translateY(-10px);
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 3.6rem !important;
+    gap: 2px !important;
+    margin-bottom: 14px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 0.8rem !important;
+    letter-spacing: 3px !important;
+    margin-top: 12px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 35px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 9px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
+
+/* ========================================
+   VERY SMALL PHONES (below 360px) - UPDATED
+   ======================================== */
+@media (max-width: 359px) {
+  .deetech-splash-center {
+    max-width: 300px;
+    padding: 25px 15px;
+    /* Move only 10px higher for very small phones */
+    transform: translateY(-10px);
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 3.2rem !important;
+    gap: 2px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 0.7rem !important;
+    letter-spacing: 2.5px !important;
+    margin-top: 10px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 30px !important;
+  }
+  
+  .deetech-splash-loading-dots {
+    gap: 8px !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    width: 7px !important;
+    height: 7px !important;
+  }
+}
+
+/* ========================================
+   BRAND TEXT - Base styles (will be overridden by media queries)
+   ======================================== */
+.deetech-splash-brand-text {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #0066ff;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  text-shadow: 
+    0 0 40px rgba(0, 102, 255, 0.5),
+    0 0 80px rgba(0, 102, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+/* Individual Letters - BRANDING MODE */
+.deetech-splash-branding .deetech-splash-brand-text .deetech-splash-brand-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  filter: blur(4px);
+  animation: deetech-splash-letter-entrance 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes deetech-splash-letter-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Staggered Letter Delays */
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(1) { animation-delay: 0.1s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(2) { animation-delay: 0.25s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(3) { animation-delay: 0.4s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(4) { animation-delay: 0.55s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(5) { animation-delay: 0.7s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(6) { animation-delay: 0.85s; }
+.deetech-splash-branding .deetech-splash-brand-letter:nth-child(7) { animation-delay: 1s; }
+
+/* SLOW-NETWORK MODE */
+.deetech-splash-slow-network .deetech-splash-brand-text .deetech-splash-brand-letter {
+  display: inline-block;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  animation: deetech-splash-gentle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes deetech-splash-gentle-pulse {
+  0%, 100% {
+    opacity: 0.95;
+    text-shadow: 
+      0 0 40px rgba(0, 102, 255, 0.5),
+      0 0 80px rgba(0, 102, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 
+      0 0 50px rgba(0, 102, 255, 0.6),
+      0 0 100px rgba(0, 102, 255, 0.4);
+  }
+}
+
+/* ========================================
+   SUBTITLE - Base styles
+   ======================================== */
+.deetech-splash-brand-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  margin-top: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+/* BRANDING MODE - Appears after letters */
+.deetech-splash-branding .deetech-splash-brand-subtitle {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: deetech-splash-subtitle-fade-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
+}
+
+@keyframes deetech-splash-subtitle-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SLOW-NETWORK MODE - Instant */
+.deetech-splash-slow-network .deetech-splash-brand-subtitle {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========================================
+   LOADING INDICATOR - Base styles
+   ======================================== */
+.deetech-splash-loading-indicator {
+  margin-top: 50px;
+}
+
+/* BRANDING MODE - Appears last */
+.deetech-splash-branding .deetech-splash-loading-indicator {
+  opacity: 0;
+  animation: deetech-splash-indicator-fade-in 0.5s ease-out 1.8s forwards;
+}
+
+@keyframes deetech-splash-indicator-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SLOW-NETWORK MODE - Instant */
+.deetech-splash-slow-network .deetech-splash-loading-indicator {
+  opacity: 1;
+}
+
+/* ========================================
+   LOADING DOTS - Base styles
+   ======================================== */
+.deetech-splash-loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.deetech-splash-loading-dots .deetech-splash-loading-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0066ff;
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.7);
+  animation: deetech-splash-dot-bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes deetech-splash-dot-bounce {
+  0%, 80%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-12px) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(0, 102, 255, 0.9);
+  }
+}
+
+.deetech-splash-dot-1 { animation-delay: 0s; }
+.deetech-splash-dot-2 { animation-delay: 0.2s; }
+.deetech-splash-dot-3 { animation-delay: 0.4s; }
+
+/* ========================================
+   HEIGHT ADJUSTMENTS FOR PORTRAIT/LANDSCAPE
+   ======================================== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .deetech-splash-center {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: calc(1.5rem + 2vh) !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: calc(0.6rem + 0.5vh) !important;
+    margin-top: 8px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 20px !important;
+  }
+}
+
+@media (max-height: 400px) {
+  .deetech-splash-center {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 2rem !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .deetech-splash-brand-subtitle {
+    font-size: 0.6rem !important;
+    margin-top: 5px !important;
+  }
+  
+  .deetech-splash-loading-indicator {
+    margin-top: 15px !important;
+  }
+}
+
+/* ========================================
+   IPHONE SPECIFIC ADJUSTMENTS - SIMPLIFIED
+   ======================================== */
+
+/* iPhone 12/13/14 Pro Max (428px width) */
+@media only screen and (min-device-width: 428px) and (max-device-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+  .deetech-splash-center {
+    transform: translateY(-10px); /* Consistent 10px lift for iPhone Pro Max */
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 4.5rem !important;
+  }
+}
+
+/* iPhone 12/13/14 Pro (390px width) */
+@media only screen and (min-device-width: 390px) and (max-device-width: 390px) and (-webkit-device-pixel-ratio: 3) {
+  .deetech-splash-center {
+    transform: translateY(-10px); /* Consistent 10px lift */
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 4rem !important;
+  }
+}
+
+/* iPhone SE and smaller iPhones */
+@media only screen and (max-device-width: 375px) and (-webkit-device-pixel-ratio: 2) {
+  .deetech-splash-center {
+    transform: translateY(-10px); /* Consistent 10px lift */
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: 3.8rem !important;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY - REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .deetech-splash-screen,
+  .deetech-splash-brand-text .deetech-splash-brand-letter,
+  .deetech-splash-brand-subtitle,
+  .deetech-splash-loading-indicator {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .deetech-splash-branding .deetech-splash-brand-text .deetech-splash-brand-letter,
+  .deetech-splash-branding .deetech-splash-brand-subtitle,
+  .deetech-splash-branding .deetech-splash-loading-indicator {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .deetech-splash-slow-network .deetech-splash-brand-text .deetech-splash-brand-letter {
+    animation: none !important;
+  }
+
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    animation: deetech-splash-dot-simple 2s ease-in-out infinite;
+  }
+
+  @keyframes deetech-splash-dot-simple {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+.deetech-splash-screen * {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent layout shifts */
+.deetech-splash-brand-text,
+.deetech-splash-brand-subtitle,
+.deetech-splash-loading-indicator {
+  will-change: opacity, transform;
+}
+
+/* Force GPU acceleration */
+.deetech-splash-brand-text .deetech-splash-brand-letter {
+  transform: translateZ(0);
+}
+
+/* ========================================
+   CONTENT VISIBILITY CONTROL
+   ======================================== */
+/* Hide content when splash is active */
+.deetech-splash-body-active ~ *:not(.deetech-splash-screen) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  z-index: -9999 !important;
+  pointer-events: none !important;
+}
+
+/* When splash is removed, restore content */
+.deetech-splash-body-active:not(.deetech-splash-body-active) ~ * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
+  overflow: visible !important;
+  z-index: auto !important;
+  pointer-events: auto !important;
+}
+
+/* ========================================
+   ORIENTATION SPECIFIC ADJUSTMENTS
+   ======================================== */
+@media (orientation: portrait) {
+  .deetech-splash-center {
+    padding-top: max(30px, 10vh);
+    padding-bottom: max(30px, 10vh);
+  }
+}
+
+@media (orientation: landscape) {
+  .deetech-splash-center {
+    padding-top: max(20px, 5vh);
+    padding-bottom: max(20px, 5vh);
+  }
+  
+  .deetech-splash-brand-text {
+    font-size: calc(2rem + 3vw) !important;
+  }
+}
+
+/* ========================================
+   POSITIONING FIXES - MOBILE VS DESKTOP
+   ======================================== */
+
+/* Reset transform for desktop and tablet sizes */
+@media (min-width: 768px) {
+  .deetech-splash-center {
+    transform: none !important; /* Desktop keeps perfect center */
+  }
+}
+
+/* Mobile adjustments only */
+@media (max-width: 767px) {
+  .deetech-splash-center {
+    justify-content: center !important; /* Keep vertical center on mobile */
+    padding-top: 0 !important; /* Remove extra padding */
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Reset mobile-specific overrides that might conflict */
+.deetech-splash-center {
+  /* Base state is centered */
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   DARK MODE FIX - PRESERVE BLUE COLOR
+   ======================================== */
+
+/* Force blue color to stay blue in dark mode */
+.deetech-splash-brand-text,
+.deetech-splash-brand-text .deetech-splash-brand-letter {
+  color: #0066ff !important; /* Force blue color */
+}
+
+.deetech-splash-loading-dots .deetech-splash-loading-dot {
+  background: #0066ff !important; /* Force blue color for dots */
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.7) !important;
+}
+
+/* Override any potential dark mode color changes */
+.dark-mode .deetech-splash-brand-text,
+.dark-mode .deetech-splash-brand-text .deetech-splash-brand-letter,
+[data-theme="dark"] .deetech-splash-brand-text,
+[data-theme="dark"] .deetech-splash-brand-text .deetech-splash-brand-letter,
+.theme-dark .deetech-splash-brand-text,
+.theme-dark .deetech-splash-brand-text .deetech-splash-brand-letter {
+  color: #0066ff !important; /* Force blue regardless of dark mode */
+}
+
+.dark-mode .deetech-splash-loading-dots .deetech-splash-loading-dot,
+[data-theme="dark"] .deetech-splash-loading-dots .deetech-splash-loading-dot,
+.theme-dark .deetech-splash-loading-dots .deetech-splash-loading-dot {
+  background: #0066ff !important;
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.7) !important;
+}
+
+/* Ensure animations use blue in dark mode */
+@keyframes deetech-splash-dot-bounce {
+  0%, 80%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.7);
+  }
+  40% {
+    transform: translateY(-12px) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(0, 102, 255, 0.9);
+  }
+}
+
+/* Slow-network mode animation with blue */
+@keyframes deetech-splash-gentle-pulse {
+  0%, 100% {
+    opacity: 0.95;
+    text-shadow: 
+      0 0 40px rgba(0, 102, 255, 0.5),
+      0 0 80px rgba(0, 102, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 
+      0 0 50px rgba(0, 102, 255, 0.6),
+      0 0 100px rgba(0, 102, 255, 0.4);
+  }
+}
+
+/* Prevent any color inheritance from parent dark mode classes */
+body.dark-mode .deetech-splash-screen *,
+[data-theme="dark"] .deetech-splash-screen *,
+.theme-dark .deetech-splash-screen * {
+  /* Don't inherit text colors from dark mode */
+  color: inherit !important;
+}
+
+/* Specific override for the brand text in all dark mode scenarios */
+.dark-mode .deetech-splash-brand-text,
+.dark-mode .deetech-splash-branding .deetech-splash-brand-text,
+.dark-mode .deetech-splash-slow-network .deetech-splash-brand-text {
+  color: #0066ff !important;
+  text-shadow: 
+    0 0 40px rgba(0, 102, 255, 0.5),
+    0 0 80px rgba(0, 102, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Force the background gradient to stay the same in dark mode */
+.dark-mode .deetech-splash-screen,
+[data-theme="dark"] .deetech-splash-screen,
+.theme-dark .deetech-splash-screen {
+  background: linear-gradient(135deg, #000814 0%, #001d3d 50%, #000814 100%) !important;
+  background-size: 200% 200% !important;
+}
+
+/* Important: Ensure no other CSS rules override our blue color */
+.deetech-splash-brand-text,
+.deetech-splash-brand-text span,
+.deetech-splash-brand-text .deetech-splash-brand-letter {
+  /* Use !important to override any dark mode color changes */
+  color: #0066ff !important;
+  -webkit-text-fill-color: #0066ff !important;
+  fill: #0066ff !important;
+  stroke: #0066ff !important;
+}
+
+/* Media query overrides for dark mode */
+@media (prefers-color-scheme: dark) {
+  .deetech-splash-brand-text,
+  .deetech-splash-brand-text .deetech-splash-brand-letter {
+    color: #0066ff !important;
+  }
+  
+  .deetech-splash-loading-dots .deetech-splash-loading-dot {
+    background: #0066ff !important;
+  }
+}
+
+/* ========================================
+   PRINT STYLES - Keep blue when printing
+   ======================================== */
+@media print {
+  .deetech-splash-brand-text,
+  .deetech-splash-brand-text .deetech-splash-brand-letter {
+    color: #0066ff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* ========================================
+   HIGH CONTRAST MODE SUPPORT
+   ======================================== */
+@media (prefers-contrast: high) {
+  .deetech-splash-brand-text,
+  .deetech-splash-brand-text .deetech-splash-brand-letter {
+    color: #0066ff !important;
+    text-shadow: 
+      0 0 60px rgba(0, 102, 255, 0.8),
+      0 0 120px rgba(0, 102, 255, 0.6),
+      0 4px 16px rgba(0, 0, 0, 0.8) !important;
+  }
+}

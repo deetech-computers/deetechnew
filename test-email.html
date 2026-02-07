@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DEETECH Email Test</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f0f2f5; }
+        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 450px; width: 100%; }
+        h2 { color: #1a1a1a; margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 25px; }
+        button { background: #fc0038; color: white; border: none; padding: 14px 28px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.3s; width: 100%; }
+        button:hover { background: #d4002f; }
+        #status { margin-top: 25px; padding: 15px; border-radius: 6px; font-size: 14px; display: none; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>DEETECH System Test</h2>
+    <p>Testing: Welcome & Order Templates</p>
+    <button onclick="sendTest()">🚀 Run Full Email Test</button>
+    <div id="status"></div>
+</div>
+
+<script type="text/javascript">
+    // 1. Initialize with your Public Key
+    (function() {
+        emailjs.init("CBbrohaBqT3R-haon"); 
+    })();
+
+    async function sendTest() {
+        const statusDiv = document.getElementById('status');
+        statusDiv.style.display = "block";
+        statusDiv.innerText = "⏳ Initializing Request...";
+        statusDiv.style.color = "#856404";
+        statusDiv.style.backgroundColor = "#fff3cd";
+
+        const serviceID = "service_lixosu5";
+        const welcomeTemplate = "template_4hxu44j";
+        const orderTemplate = "template_h3ax6ms";
+        const testEmail = "deetechcomputers01@gmail.com";
+
+        // This object matches exactly what your React app sends
+        const baseParams = {
+            to_email: testEmail, // CRITICAL: This must match the {{to_email}} tag in your dashboard
+            to_name: "Tech Support Test",
+            company_name: "DEETECH COMPUTERS",
+            support_email: "cartadaniel01@gmail.com",
+            website_url: window.location.origin,
+            current_year: new Date().getFullYear()
+        };
+
+        try {
+            // 1. Send Welcome Email
+            statusDiv.innerText = "⏳ Sending Welcome Email...";
+            await emailjs.send(serviceID, welcomeTemplate, baseParams);
+            console.log("✅ Welcome email sent successfully");
+
+            // 2. Send Order Confirmation
+            statusDiv.innerText = "⏳ Welcome Sent! Sending Order Email...";
+            await emailjs.send(serviceID, orderTemplate, {
+                ...baseParams,
+                order_id: "ORD-2025-TEST",
+                order_total: "GH₵ 1,200.00",
+                items_list: "1x HP EliteBook 840 G5 - GH₵ 1,200.00",
+                shipping_address: "DEETECH Workshop, Kumasi"
+            });
+
+            statusDiv.innerText = "✅ ALL TESTS PASSED! Check your inbox (and Spam folder).";
+            statusDiv.style.color = "#155724";
+            statusDiv.style.backgroundColor = "#d4edda";
+            
+        } catch (error) {
+            console.error("EmailJS Error Details:", error);
+            
+            // Handle the 422 error specifically
+            if (error.status === 422) {
+                statusDiv.innerText = "❌ ERROR 422: The recipient email field is missing. Please go to EmailJS Dashboard and add {{to_email}} to the 'To Email' field.";
+            } else {
+                statusDiv.innerText = "❌ FAILED: " + (error.text || JSON.stringify(error));
+            }
+            
+            statusDiv.style.color = "#721c24";
+            statusDiv.style.backgroundColor = "#f8d7da";
+        }
+    }
+</script>
+
+</body>
+</html>

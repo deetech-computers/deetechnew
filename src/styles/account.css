@@ -1,0 +1,2420 @@
+/* ===== ACCOUNT PAGE - 95% SCREEN WIDTH & THEME MATCH ===== */
+
+:root {
+  /* Primary Colors - Theme Match */
+  --account-primary: #1e40af;
+  --account-primary-dark: #1e3a8a;
+  --account-secondary: #3b82f6;
+  --account-success: #10b981;
+  --account-error: #ef4444;
+  --account-warning: #f59e0b;
+  
+  /* Gray Scale - Theme Match */
+  --account-gray-50: #f9fafb;
+  --account-gray-100: #f3f4f6;
+  --account-gray-200: #e5e7eb;
+  --account-gray-300: #d1d5db;
+  --account-gray-400: #9ca3af;
+  --account-gray-500: #6b7280;
+  --account-gray-600: #4b5563;
+  --account-gray-700: #374151;
+  --account-gray-800: #1f2937;
+  --account-gray-900: #111827;
+  
+  /* White */
+  --account-white: #ffffff;
+}
+
+/* ===== MAIN CONTAINER - 95% SCREEN WIDTH ===== */
+.account-page {
+  width: 100%;
+  max-width: min(1400px, 95vw);
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  animation: account-fadeInUp 0.8s ease-out;
+}
+
+/* ===== ACCOUNT HEADER - THEME MATCH GRADIENT ===== */
+.account-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: var(--account-white);
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: 20px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.account-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.account-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  animation: account-enhancedFloat 25s infinite linear;
+}
+
+.account-header svg {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: clamp(0.75rem, 2vw, 1rem);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.account-header-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: min(800px, 90vw);
+}
+
+.account-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  color: var(--account-white);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.account-welcome {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  max-width: min(700px, 90vw);
+}
+
+.account-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.account-affiliate-badge,
+.account-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--account-white);
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+  border-radius: 20px;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.account-affiliate-badge {
+  animation: account-pulse 2s infinite;
+}
+
+.account-admin-badge {
+  background: rgba(220, 38, 38, 0.2);
+}
+
+/* ===== ACCOUNT LAYOUT - MOBILE FIRST ===== */
+.account-layout {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  animation: account-slideInUp 0.8s ease-out 0.2s both;
+  width: 100%;
+  max-width: min(1400px, 95vw);
+  margin: 0 auto;
+}
+
+/* ===== SIDEBAR - MOBILE FIRST ===== */
+.account-sidebar {
+  background: var(--account-white);
+  border-radius: 16px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--account-gray-200);
+  height: fit-content;
+  width: 100%;
+  max-width: min(400px, 95vw);
+  margin: 0 auto;
+}
+
+.account-sidebar-tab {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.5vw, 0.75rem);
+  width: 100%;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  border: none;
+  background: transparent;
+  color: var(--account-gray-600);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+  position: relative;
+  overflow: hidden;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.account-sidebar-tab:hover {
+  color: var(--account-primary);
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateX(5px);
+}
+
+.account-sidebar-tab.account-active {
+  background: var(--account-primary);
+  color: var(--account-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(5px);
+}
+
+.account-sidebar-tab svg {
+  transition: transform 0.3s ease;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  flex-shrink: 0;
+}
+
+.account-sidebar-tab:hover svg,
+.account-sidebar-tab.account-active svg {
+  transform: scale(1.1);
+}
+
+/* ===== ACCOUNT CONTENT ===== */
+.account-content {
+  background: var(--account-white);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--account-gray-200);
+  overflow: hidden;
+  animation: account-fadeInUp 0.8s ease-out 0.4s both;
+  width: 100%;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  color: var(--account-gray-900);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+  border-bottom: 2px solid var(--account-gray-200);
+  position: relative;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--account-primary);
+}
+
+.section-header svg {
+  color: var(--account-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ===== PROFILE SECTION ===== */
+.account-profile-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+.account-profile-form {
+  max-width: min(800px, 95vw);
+  margin: 0 auto;
+}
+
+.account-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.account-form-group {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.account-form-group label {
+  display: block;
+  margin-bottom: clamp(0.375rem, 1vw, 0.5rem);
+  color: var(--account-gray-700);
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+}
+
+.account-form-group input,
+.account-form-group select {
+  width: 100%;
+  padding: clamp(0.875rem, 2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+  border: 2px solid var(--account-gray-300);
+  border-radius: 12px;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  transition: all 0.3s ease;
+  background: var(--account-white);
+}
+
+.account-form-group input:focus,
+.account-form-group select:focus {
+  outline: none;
+  border-color: var(--account-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+.account-form-group input:hover,
+.account-form-group select:hover {
+  border-color: var(--account-gray-400);
+}
+
+.account-disabled-input {
+  background: var(--account-gray-100) !important;
+  color: var(--account-gray-500) !important;
+  cursor: not-allowed !important;
+}
+
+.account-form-group small {
+  display: block;
+  margin-top: clamp(0.375rem, 1vw, 0.5rem);
+  color: var(--account-gray-500);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+}
+
+.help-text {
+  display: block;
+  margin-top: clamp(0.375rem, 1vw, 0.5rem);
+  color: var(--account-gray-500);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+}
+
+/* ===== BUTTON STYLES ===== */
+.account-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(2rem, 4vw, 3rem);
+  background: var(--account-primary);
+  color: var(--account-white);
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: min(400px, 95vw);
+  margin-top: 1rem;
+}
+
+.account-save-btn:hover:not(:disabled) {
+  background: var(--account-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+}
+
+.account-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spin {
+  animation: account-spin 1s linear infinite;
+}
+
+/* ===== ORDERS SECTION - ENHANCED ===== */
+.account-orders-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+.account-no-orders {
+  text-align: center;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+  color: var(--account-gray-600);
+  width: 100%;
+  max-width: min(600px, 95vw);
+  margin: 0 auto;
+}
+
+.no-orders-icon {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  color: var(--account-gray-400);
+  font-size: clamp(3rem, 6vw, 4rem);
+  opacity: 0.5;
+}
+
+.account-no-orders h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  color: var(--account-gray-800);
+}
+
+.account-no-orders p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.6;
+}
+
+/* Enhanced Order Cards */
+.account-orders-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  width: 100%;
+}
+
+.account-order-card {
+  background: var(--account-white);
+  border: 1px solid var(--account-gray-200);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.account-order-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--account-primary), var(--account-secondary));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.account-order-card:hover::before {
+  transform: scaleX(1);
+}
+
+.account-order-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Header */
+.account-order-header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.account-order-header > div:first-child {
+  flex: 1;
+}
+
+.account-order-header h3 {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: var(--account-gray-900);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.account-order-date {
+  color: var(--account-gray-500);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.account-order-date::before {
+  content: '📅';
+  font-size: 0.875em;
+}
+
+/* Order Status */
+.account-order-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.account-status-badge {
+  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(1rem, 2vw, 1.25rem);
+  border-radius: 20px;
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.account-status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.account-status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.account-status-badge.pending::before {
+  background: #f59e0b;
+}
+
+.account-status-badge.processing {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+.account-status-badge.processing::before {
+  background: #3b82f6;
+}
+
+.account-status-badge.shipped {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.account-status-badge.shipped::before {
+  background: #10b981;
+}
+
+.account-status-badge.delivered {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.account-status-badge.delivered::before {
+  background: #22c55e;
+}
+
+.account-status-badge.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.account-status-badge.cancelled::before {
+  background: #ef4444;
+}
+
+/* Order Details */
+.account-order-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: linear-gradient(135deg, var(--account-gray-50), var(--account-white));
+  border-radius: 12px;
+  border: 1px solid var(--account-gray-200);
+}
+
+.account-order-details p {
+  margin: 0;
+  color: var(--account-gray-700);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.account-order-details strong {
+  color: var(--account-gray-900);
+  min-width: 80px;
+}
+
+.account-order-items-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--account-gray-300);
+}
+
+.account-order-item-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.5rem, 1.5vw, 0.75rem);
+  background: var(--account-white);
+  border-radius: 8px;
+  border: 1px solid var(--account-gray-200);
+  transition: transform 0.2s ease;
+}
+
+.account-order-item-preview:hover {
+  transform: translateY(-2px);
+  border-color: var(--account-primary);
+}
+
+.account-order-item-preview img {
+  width: clamp(40px, 8vw, 45px);
+  height: clamp(40px, 8vw, 45px);
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--account-gray-200);
+}
+
+.account-order-item-preview span {
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  color: var(--account-gray-700);
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Order Actions */
+.account-order-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--account-gray-200);
+}
+
+.account-order-actions .btn {
+  padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  border-radius: 8px;
+}
+
+/* ===== WISHLIST SECTION ===== */
+.account-wishlist-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+/* ===== AFFILIATE SECTION ===== */
+.account-affiliate-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  width: 100%;
+}
+
+/* ===== LOADING STATES ===== */
+.account-loading {
+  text-align: center;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+.account-loading .spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--account-gray-200);
+  border-top-color: var(--account-primary);
+  border-radius: 50%;
+  animation: account-spin 1s linear infinite;
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+}
+
+.account-loading p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--account-gray-600);
+  margin-bottom: 0.5rem;
+}
+
+.loading-subtext {
+  font-size: clamp(0.875rem, 1.5vw, 1rem) !important;
+  color: var(--account-gray-500) !important;
+  margin-top: 0.5rem;
+}
+
+/* ===== AUTH REQUIRED ===== */
+.account-auth-required {
+  text-align: center;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
+  background: var(--account-white);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: min(500px, 95vw);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.account-auth-required h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  color: var(--account-gray-900);
+}
+
+.account-auth-required p {
+  color: var(--account-gray-600);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* ===== FORM VALIDATION STYLES ===== */
+.account-input-error {
+  border-color: var(--account-error) !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+}
+
+.account-error-message {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--account-error);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+  font-weight: 500;
+}
+
+/* ===== BUTTON BASE STYLES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(0.75rem, 1.5vw, 0.875rem) clamp(1.5rem, 3vw, 2rem);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--account-primary);
+  color: var(--account-white);
+}
+
+.btn-primary:hover {
+  background: var(--account-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--account-primary);
+  border: 2px solid var(--account-primary);
+}
+
+.btn-outline:hover {
+  background: var(--account-primary);
+  color: var(--account-white);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.25vw, 0.875rem);
+}
+
+.btn-large {
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes account-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes account-slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes account-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes account-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes account-enhancedFloat {
+  0% { 
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.05;
+  }
+  25% { 
+    transform: translate(-30px, -30px) rotate(90deg) scale(1.1);
+    opacity: 0.08;
+  }
+  50% { 
+    transform: translate(-60px, -60px) rotate(180deg) scale(1.05);
+    opacity: 0.06;
+  }
+  75% { 
+    transform: translate(-30px, -30px) rotate(270deg) scale(1.1);
+    opacity: 0.08;
+  }
+  100% { 
+    transform: translate(0, 0) rotate(360deg) scale(1);
+    opacity: 0.05;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet Styles (≥ 768px) */
+@media (min-width: 768px) {
+  .account-page {
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  .account-header {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .account-header svg {
+    margin-bottom: 0;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  
+  .account-badges {
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+  
+  .account-form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  .account-order-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .account-order-status {
+    justify-content: flex-end;
+  }
+  
+  .account-order-details {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .account-order-items-preview {
+    justify-content: flex-start;
+  }
+  
+  .account-save-btn {
+    width: auto;
+    max-width: none;
+  }
+  
+  .account-no-orders .btn {
+    width: auto;
+  }
+}
+
+/* Desktop Styles (≥ 1024px) */
+@media (min-width: 1024px) {
+  .account-layout {
+    display: grid;
+    grid-template-columns: min(300px, 95vw) 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+  }
+  
+  .account-sidebar {
+    position: sticky;
+    top: clamp(2rem, 4vw, 3rem);
+    margin: 0;
+    max-width: none;
+  }
+  
+  .account-profile-section,
+  .account-orders-section,
+  .account-wishlist-section,
+  .account-affiliate-section {
+    padding: clamp(2rem, 4vw, 2.5rem);
+  }
+  
+  .account-profile-form {
+    max-width: min(800px, 95vw);
+  }
+  
+  .account-orders-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large Desktop Styles (≥ 1200px) */
+@media (min-width: 1200px) {
+  .account-layout {
+    grid-template-columns: 320px 1fr;
+  }
+  
+  .account-page {
+    max-width: min(1400px, 95vw);
+  }
+  
+  .account-order-details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small Mobile Optimizations (≤ 480px) */
+@media (max-width: 480px) {
+  .account-header {
+    padding: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .account-header svg {
+    padding: 0.75rem;
+    font-size: 2rem;
+  }
+  
+  .account-profile-section,
+  .account-orders-section,
+  .account-wishlist-section,
+  .account-affiliate-section {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  .account-order-card {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  .account-order-items-preview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .account-order-actions {
+    flex-direction: column;
+  }
+  
+  .account-order-actions .btn {
+    width: 100%;
+  }
+}
+
+
+/* ===== ORDER MODAL ===== */
+.account-order-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: account-fadeIn 0.3s ease-out;
+}
+
+.account-order-modal {
+  background: var(--account-white);
+  border-radius: 20px;
+  width: 100%;
+  max-width: min(800px, 95vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: account-slideInUp 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.account-order-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--account-gray-200);
+  position: sticky;
+  top: 0;
+  background: var(--account-white);
+  z-index: 10;
+}
+
+.account-order-modal-header h3 {
+  margin: 0;
+  color: var(--account-gray-900);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.account-order-modal-close {
+  background: transparent;
+  border: none;
+  color: var(--account-gray-500);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.account-order-modal-close:hover {
+  background: var(--account-gray-100);
+  color: var(--account-gray-700);
+}
+
+.account-order-modal-content {
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Order Timeline */
+.account-order-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.account-order-timeline::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--account-gray-300);
+  z-index: 1;
+}
+
+.account-timeline-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.account-timeline-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--account-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.account-timeline-step.account-active .account-timeline-icon {
+  background: var(--account-primary);
+  color: var(--account-white);
+  transform: scale(1.1);
+}
+
+.account-timeline-content h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  color: var(--account-gray-700);
+}
+
+.account-timeline-step.account-active .account-timeline-content h4 {
+  color: var(--account-primary);
+  font-weight: 600;
+}
+
+.account-timeline-content p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--account-gray-500);
+}
+
+/* Order Items */
+.account-order-items {
+  margin-bottom: 2rem;
+}
+
+.account-order-items h4 {
+  margin-bottom: 1rem;
+  color: var(--account-gray-900);
+  font-size: 1.125rem;
+}
+
+.account-order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.account-order-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--account-gray-50);
+  border-radius: 12px;
+  border: 1px solid var(--account-gray-200);
+}
+
+.account-order-item-image {
+  flex-shrink: 0;
+}
+
+.account-order-item-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--account-gray-300);
+}
+
+.account-order-item-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: var(--account-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--account-gray-400);
+}
+
+.account-order-item-details {
+  flex: 1;
+}
+
+.account-order-item-details h5 {
+  margin: 0 0 0.5rem;
+  color: var(--account-gray-900);
+  font-size: 1rem;
+}
+
+.account-order-item-details p {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: var(--account-gray-600);
+}
+
+/* Order Summary */
+.account-order-summary {
+  background: var(--account-gray-50);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--account-gray-200);
+}
+
+.account-order-summary h4 {
+  margin: 0 0 1rem;
+  color: var(--account-gray-900);
+  font-size: 1.125rem;
+}
+
+.account-order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--account-gray-200);
+}
+
+.account-order-summary-row:last-child {
+  border-bottom: none;
+}
+
+.account-order-total {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--account-primary);
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--account-gray-300);
+}
+
+/* Shipping Info */
+.account-shipping-info h4 {
+  margin-bottom: 1rem;
+  color: var(--account-gray-900);
+  font-size: 1.125rem;
+}
+
+.account-shipping-details {
+  background: var(--account-gray-50);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--account-gray-200);
+}
+
+.account-shipping-details p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--account-gray-700);
+}
+
+
+
+
+/* Modal Footer */
+.account-order-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--account-gray-200);
+  background: var(--account-gray-50);
+}
+
+@keyframes account-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .account-order-timeline {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .account-order-timeline::before {
+    display: none;
+  }
+  
+  .account-timeline-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+  
+  .account-timeline-icon {
+    margin: 0;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .account-order-modal-footer {
+    flex-direction: column;
+  }
+  
+  .account-order-modal-footer .btn {
+    width: 100%;
+  }
+}
+
+.account-order-expanded {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--account-gray-200);
+  animation: account-fadeIn 0.3s ease;
+}
+
+.account-order-items-expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.account-order-item-expanded {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: var(--account-gray-50);
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.account-order-total-expanded {
+  text-align: right;
+  padding-top: 1rem;
+  border-top: 1px solid var(--account-gray-300);
+}
+
+
+/* ===== ACCOUNT PAGE DARK MODE - DETAILED ANALYSIS ===== */
+
+/* 
+  TARGETING STRATEGY:
+  1. Use .dark-mode class on body for dark mode activation
+  2. Target each component individually for precise control
+  3. Maintain the same blue gradient theme in dark mode
+  4. Ensure proper contrast ratios (WCAG 2.1 AA compliance)
+  5. Preserve all animations and interactions
+*/
+
+/* ===== 1. CONTAINER & PAGE STRUCTURE ===== */
+.dark-mode .container {
+  background: #111827; /* Dark gray-900 */
+}
+
+.dark-mode .account-page {
+  background: #111827;
+  color: #f9fafb; /* Light text for dark background */
+}
+
+/* ===== 2. ACCOUNT HEADER ===== */
+.dark-mode .account-header {
+  /* Same gradient but slightly darker for dark mode */
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.dark-mode .account-header::before {
+  background: rgba(255, 255, 255, 0.3); /* Brighter top border for visibility */
+}
+
+.dark-mode .account-header svg {
+  background: rgba(255, 255, 255, 0.15); /* Slightly brighter background */
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode .account-header h1 {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  /* Keep gradient text but adjust for dark mode */
+  background: linear-gradient(45deg, #ffffff, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark-mode .account-header p {
+  color: rgba(255, 255, 255, 0.9); /* Slightly less transparent */
+}
+
+.dark-mode .account-affiliate-badge {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== 3. LAYOUT STRUCTURE ===== */
+.dark-mode .account-layout {
+  background: transparent;
+}
+
+/* ===== 4. SIDEBAR - OPTION SELECTOR ===== */
+.dark-mode .account-sidebar {
+  background: #1f2937; /* Dark gray-800 */
+  border: 1px solid #374151; /* Dark gray-700 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .account-sidebar-tab {
+  color: #d1d5db !important; /* Light gray text */
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .account-sidebar-tab:hover {
+  color: #60a5fa !important; /* Blue-400 for hover */
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.2);
+  transform: translateX(5px);
+}
+
+.dark-mode .account-sidebar-tab.account-active {
+  background: #1e40af; /* Dark blue-800 */
+  color: #ffffff !important;
+  border-color: #3b82f6; /* Blue-500 */
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Icons in sidebar */
+.dark-mode .account-sidebar-tab svg {
+  color: #d1d5db !important; /* Light gray icons */
+}
+
+.dark-mode .account-sidebar-tab:hover svg {
+  color: #60a5fa !important; /* Blue on hover */
+}
+
+.dark-mode .account-sidebar-tab.account-active svg {
+  color: #ffffff !important; /* White for active */
+}
+
+/* ===== 5. ACCOUNT CONTENT AREA ===== */
+.dark-mode .account-content {
+  background: #1f2937; /* Dark gray-800 */
+  border: 1px solid #374151; /* Dark gray-700 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== 6. PROFILE SECTION ===== */
+.dark-mode .account-profile-section {
+  background: transparent;
+}
+
+.dark-mode .account-profile-section h2 {
+  color: #f9fafb; /* Light text */
+  border-bottom: 2px solid #374151; /* Dark gray-700 */
+}
+
+.dark-mode .account-profile-section h2::after {
+  background: #60a5fa; /* Blue-400 */
+}
+
+.dark-mode .account-profile-section h2 svg {
+  color: #60a5fa; /* Blue-400 */
+}
+
+/* Form elements */
+.dark-mode .account-form-group label {
+  color: #e5e7eb; /* Lighter gray for labels */
+}
+
+.dark-mode .account-form-group input,
+.dark-mode .account-form-group select {
+  background: #111827; /* Dark gray-900 */
+  border: 2px solid #4b5563; /* Dark gray-600 */
+  color: #f9fafb; /* Light text */
+  transition: all 0.3s ease;
+}
+
+.dark-mode .account-form-group input:focus,
+.dark-mode .account-form-group select:focus {
+  border-color: #60a5fa; /* Blue-400 */
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  background: #111827; /* Keep dark background */
+}
+
+.dark-mode .account-form-group input:hover,
+.dark-mode .account-form-group select:hover {
+  border-color: #6b7280; /* Gray-500 */
+  background: #1f2937; /* Slightly lighter on hover */
+}
+
+.dark-mode .account-disabled-input {
+  background: #374151 !important; /* Dark gray-700 */
+  color: #9ca3af !important; /* Gray-400 */
+  cursor: not-allowed !important;
+}
+
+.dark-mode .account-form-group small {
+  color: #9ca3af; /* Gray-400 for helper text */
+}
+
+/* Auto-fill notice */
+.dark-mode .account-auto-fill-notice {
+  background: rgba(96, 165, 250, 0.1); /* Blue with opacity */
+  border-left: 4px solid #60a5fa; /* Blue-400 */
+  border-radius: 12px;
+}
+
+.dark-mode .account-auto-fill-notice p {
+  color: #e5e7eb; /* Light gray */
+}
+
+.dark-mode .account-auto-fill-notice strong {
+  color: #93c5fd; /* Blue-300 for emphasis */
+}
+
+/* Save button */
+.dark-mode .account-save-btn {
+  background: #1e40af; /* Dark blue */
+  color: #ffffff;
+  border: 2px solid #3b82f6;
+}
+
+.dark-mode .account-save-btn:hover {
+  background: #1e3a8a; /* Darker blue on hover */
+  border-color: #60a5fa;
+}
+
+/* ===== 7. ORDERS SECTION ===== */
+.dark-mode .account-orders-section h2 {
+  color: #f9fafb;
+  border-bottom: 2px solid #374151;
+}
+
+.dark-mode .account-orders-section h2::after {
+  background: #60a5fa;
+}
+
+/* No orders state */
+.dark-mode .account-no-orders {
+  color: #9ca3af; /* Gray-400 */
+}
+
+.dark-mode .account-no-orders svg {
+  color: #6b7280; /* Gray-500 */
+}
+
+.dark-mode .account-no-orders p {
+  color: #d1d5db; /* Gray-300 */
+}
+
+/* Order cards */
+.dark-mode .account-order-card {
+  background: #1f2937; /* Dark gray-800 */
+  border: 1px solid #374151; /* Dark gray-700 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .account-order-card:hover {
+  background: #111827; /* Dark gray-900 on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border-color: #4b5563; /* Slightly lighter border */
+}
+
+.dark-mode .account-order-card::before {
+  background: linear-gradient(90deg, #1e3a8a, #1e40af); /* Dark blue gradient */
+}
+
+.dark-mode .account-order-header h3 {
+  color: #f9fafb; /* Light text */
+}
+
+.dark-mode .account-order-date {
+  color: #9ca3af; /* Gray-400 */
+}
+
+/* Status badges - Dark mode variants */
+.dark-mode .account-status-badge {
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.dark-mode .account-status-badge.pending {
+  background: rgba(245, 158, 11, 0.2); /* Amber with opacity */
+  color: #fbbf24; /* Amber-300 */
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.dark-mode .account-status-badge.processing {
+  background: rgba(59, 130, 246, 0.2); /* Blue with opacity */
+  color: #60a5fa; /* Blue-400 */
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .account-status-badge.shipped {
+  background: rgba(16, 185, 129, 0.2); /* Green with opacity */
+  color: #34d399; /* Emerald-400 */
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.dark-mode .account-status-badge.delivered {
+  background: rgba(34, 197, 94, 0.3); /* Slightly more opacity */
+  color: #4ade80; /* Green-400 */
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.dark-mode .account-status-badge.cancelled {
+  background: rgba(239, 68, 68, 0.2); /* Red with opacity */
+  color: #f87171; /* Red-400 */
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Order details */
+.dark-mode .account-order-details {
+  background: #111827; /* Dark gray-900 */
+  border: 1px solid #374151;
+}
+
+.dark-mode .account-order-details p {
+  color: #e5e7eb; /* Light gray */
+}
+
+.dark-mode .account-order-details p strong {
+  color: #f9fafb; /* White for emphasis */
+}
+
+/* Order items preview */
+.dark-mode .account-order-item-preview {
+  background: #111827; /* Dark gray-900 */
+  border: 1px solid #374151; /* Dark gray-700 */
+}
+
+.dark-mode .account-order-item-preview:hover {
+  background: #1f2937; /* Slightly lighter on hover */
+  border-color: #4b5563;
+}
+
+.dark-mode .account-order-item-preview span {
+  color: #d1d5db; /* Gray-300 */
+}
+
+/* ===== 8. AUTH REQUIRED SECTION ===== */
+.dark-mode .account-auth-required {
+  background: #1f2937; /* Dark gray-800 */
+  border: 1px solid #374151; /* Dark gray-700 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .account-auth-required h2 {
+  color: #f9fafb; /* Light text */
+}
+
+.dark-mode .account-auth-required p {
+  color: #d1d5db; /* Gray-300 */
+}
+
+
+
+
+/* ===== 10. BUTTONS ===== */
+/* Regular buttons */
+.dark-mode .btn {
+  background: #ffffff;
+  color: #1e3a8a; /* Dark blue text */
+  border: 2px solid #ffffff;
+}
+
+.dark-mode .btn:hover {
+  background: #f8fafc; /* Very light gray */
+  color: #1e3a8a;
+}
+
+/* Secondary buttons */
+.dark-mode .btn-secondary {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.dark-mode .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== 11. FORM VALIDATION ===== */
+.dark-mode .account-form-group input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #f87171; /* Red-400 */
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.dark-mode .account-form-group input:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #34d399; /* Emerald-400 */
+  background: rgba(34, 197, 94, 0.1);
+}
+
+/* ===== 12. FOCUS STATES ===== */
+.dark-mode .account-sidebar-tab:focus,
+.dark-mode .account-form-group input:focus,
+.dark-mode .account-form-group select:focus,
+.dark-mode .btn:focus {
+  outline: 2px solid #60a5fa; /* Blue-400 */
+  outline-offset: 2px;
+}
+
+/* ===== 13. TEXT CONTRAST ENHANCEMENTS ===== */
+.dark-mode .account-header h1,
+.dark-mode .account-profile-section h2,
+.dark-mode .account-orders-section h2 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== 14. ACCESSIBILITY SUPPORT ===== */
+@media (prefers-contrast: high) {
+  .dark-mode .account-sidebar,
+  .dark-mode .account-content,
+  .dark-mode .account-order-card {
+    border: 2px solid #4b5563; /* Thicker borders for high contrast */
+  }
+  
+  .dark-mode .account-sidebar-tab.account-active {
+    outline: 2px solid #ffffff;
+  }
+}
+
+/* ===== 15. REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  .dark-mode .account-header::after {
+    animation: none; /* Remove floating animation */
+  }
+  
+  .dark-mode .account-sidebar-tab:hover,
+  .dark-mode .account-order-card:hover {
+    transform: none; /* Remove movement effects */
+  }
+  
+  .dark-mode .account-affiliate-badge {
+    animation: none; /* Remove pulse animation */
+  }
+}
+
+/* ===== 16. MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  .dark-mode .account-header,
+  .dark-mode .account-sidebar,
+  .dark-mode .account-content {
+    background: #1f2937; /* Consistent background on mobile */
+  }
+  
+  .dark-mode .account-sidebar {
+    border: 1px solid #374151;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ===== 17. SMOOTH TRANSITIONS ===== */
+.dark-mode .account-page,
+.dark-mode .account-header,
+.dark-mode .account-sidebar,
+.dark-mode .account-content,
+.dark-mode .account-order-card,
+.dark-mode .account-sidebar-tab,
+.dark-mode .account-form-group input,
+.dark-mode .account-form-group select,
+.dark-mode .btn {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.3s ease;
+}
+
+/* ===== 18. PRINT STYLES ===== */
+@media print {
+  .dark-mode .account-header {
+    background: #f8f9fa !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .dark-mode .account-sidebar,
+  .dark-mode .account-content,
+  .dark-mode .account-order-card {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  
+  .dark-mode .account-sidebar-tab {
+    color: black !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .dark-mode .account-sidebar-tab.account-active {
+    background: #e5e7eb !important;
+    color: black !important;
+  }
+}
+
+/* ===== 19. WISHLIST & AFFILIATE SECTIONS ===== */
+.dark-mode .account-wishlist-section,
+.dark-mode .account-affiliate-section {
+  background: transparent;
+}
+
+/* Ensure internal components also have dark mode */
+.dark-mode .account-wishlist-section *,
+.dark-mode .account-affiliate-section * {
+  /* These should inherit from parent dark mode styles */
+}
+
+/* ===== 20. SPECIFIC ICON COLORS ===== */
+.dark-mode .account-header svg,
+.dark-mode .account-no-orders svg,
+.dark-mode .account-profile-section h2 svg {
+  /* These will inherit from parent elements, but ensure visibility */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+
+.account-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 40px 20px;
+}
+
+.account-loading .spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.account-loading p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.dark-mode .account-loading p {
+  color: #aaa;
+}
+
+.dark-mode .account-loading .spinner {
+  border-color: #333;
+  border-top-color: #3498db;
+}
+
+
+/* ===== DARK MODE STYLES ===== */
+
+.dark-mode .account-order-modal-footer {
+  background: rgba(30, 30, 40, 0.5) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode .account-order-expanded {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .account-order-items-expanded {
+  background: transparent;
+}
+
+.dark-mode .account-order-item-expanded {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .account-order-total-expanded {
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Modal specific dark mode */
+.dark-mode .account-order-modal {
+  background: rgba(20, 20, 30, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark-mode .account-order-modal-header {
+  background: rgba(30, 30, 40, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.dark-mode .account-order-modal-header h3 {
+  color: white !important;
+}
+
+.dark-mode .account-order-modal-close {
+  color: rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-mode .account-order-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* Timeline dark mode */
+.dark-mode .account-order-timeline::before {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .account-timeline-icon {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .account-timeline-step.account-active .account-timeline-icon {
+  background: rgba(59, 130, 246, 0.8) !important;
+  color: white !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .account-timeline-content h4 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark-mode .account-timeline-step.account-active .account-timeline-content h4 {
+  color: #3b82f6 !important;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .account-timeline-content p {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Order items dark mode */
+.dark-mode .account-order-items h4 {
+  color: white !important;
+}
+
+.dark-mode .account-order-item {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .account-order-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark-mode .account-order-item-details h5 {
+  color: white !important;
+}
+
+.dark-mode .account-order-item-details p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-mode .account-order-item-placeholder {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Order summary dark mode */
+.dark-mode .account-order-summary {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .account-order-summary h4 {
+  color: white !important;
+}
+
+.dark-mode .account-order-summary-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark-mode .account-order-total {
+  color: white !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Shipping info dark mode */
+.dark-mode .account-shipping-info h4 {
+  color: white !important;
+}
+
+.dark-mode .account-shipping-details {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .account-shipping-details p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark-mode .account-shipping-details strong {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Button dark mode */
+.dark-mode .account-order-modal-footer .btn-outline {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark-mode .account-order-modal-footer .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+}
+
+.dark-mode .account-order-modal-footer .btn-primary {
+  background: rgba(59, 130, 246, 0.8) !important;
+  color: white !important;
+  border: 2px solid rgba(59, 130, 246, 0.5) !important;
+}
+
+.dark-mode .account-order-modal-footer .btn-primary:hover {
+  background: rgba(37, 99, 235, 0.9) !important;
+  border-color: rgba(59, 130, 246, 0.7) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading states dark mode */
+.dark-mode .account-order-loading {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark-mode .account-order-loading .spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1) !important;
+  border-top-color: #3b82f6 !important;
+}
+
+/* Overlay dark mode */
+.dark-mode .account-order-modal-overlay {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Additional badges dark mode */
+.dark-mode .account-affiliate-badge {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode .account-admin-badge {
+  background: rgba(220, 38, 38, 0.3) !important;
+  color: white !important;
+  border: 1px solid rgba(220, 38, 38, 0.5) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive dark mode adjustments */
+@media (max-width: 768px) {
+  .dark-mode .account-order-modal-footer {
+    background: rgba(30, 30, 40, 0.8) !important;
+  }
+  
+  .dark-mode .account-timeline-step {
+    background: rgba(255, 255, 255, 0.02) !important;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+}
+
+/* Dark mode animations */
+@keyframes dark-mode-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.dark-mode .account-timeline-step.account-active .account-timeline-icon {
+  animation: dark-mode-pulse 2s infinite;
+}
+
+/* Glass effect for dark mode */
+.dark-mode .account-order-modal,
+.dark-mode .account-order-modal-header,
+.dark-mode .account-order-modal-footer,
+.dark-mode .account-order-summary,
+.dark-mode .account-shipping-details {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+
+/* ===== FIX: ORDER MODAL BUTTONS VISIBILITY WITH BOTTOM NAV ===== */
+
+/* Add extra margin at bottom to account for fixed bottom nav */
+.account-order-modal {
+  margin-bottom: 50px !important; /* Match your bottom nav height */
+}
+
+/* On mobile, ensure modal content doesn't get hidden behind bottom nav */
+@media (max-width: 768px) {
+  .account-order-modal-overlay {
+    padding-bottom: 50px !important; /* Create space for bottom nav */
+  }
+  
+  .account-order-modal {
+    max-height: calc(85vh - 50px) !important; /* Subtract bottom nav height */
+    margin-bottom: 0 !important;
+  }
+  
+  /* Make modal footer stick above bottom nav */
+  .account-order-modal-footer {
+    position: sticky !important;
+    bottom: 50px !important; /* Position above bottom nav */
+    padding: 1rem !important;
+    background: var(--account-white) !important;
+    border-top: 2px solid var(--account-gray-200) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Dark mode footer fix */
+  .dark-mode .account-order-modal-footer {
+    background: #1f2937 !important;
+    border-top: 2px solid #374151 !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Ensure content can scroll enough to see all buttons */
+  .account-order-modal-content {
+    max-height: calc(100vh - 220px) !important; /* Account for header + footer + bottom nav */
+    padding-bottom: 80px !important; /* Extra padding so user can scroll to see buttons */
+  }
+}
+
+/* Alternative: Push modal up when keyboard is open on mobile */
+@media (max-width: 768px) and (max-height: 700px) {
+  .account-order-modal {
+    max-height: 75vh !important;
+    margin-top: auto !important;
+    margin-bottom: 50px !important;
+  }
+}
+
+/* Ensure modal can be scrolled to show all content including buttons */
+.account-order-modal {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.account-order-modal-content {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Add a visual indicator that there's more content */
+.account-order-modal-content::after {
+  content: '' !important;
+  display: block !important;
+  height: 80px !important;
+  width: 100% !important;
+  opacity: 0 !important;
+}
+
+/* Quick fix: Make modal shorter on very small screens */
+@media (max-height: 600px) {
+  .account-order-modal {
+    max-height: 70vh !important;
+  }
+  
+  .account-order-modal-footer {
+    bottom: 40px !important;
+    padding: 0.75rem !important;
+  }
+}
+
+
+/* ===== ACCOUNT TOAST NOTIFICATIONS ===== */
+.account-toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  min-width: 300px;
+}
+
+.account-toast-notification {
+  background: var(--account-white);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: account-toast-slideInRight 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  min-width: 300px;
+}
+
+@keyframes account-toast-slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide out animation for removal */
+@keyframes account-toast-slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.account-toast-exiting {
+  animation: account-toast-slideOutRight 0.3s ease forwards;
+}
+
+.account-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+}
+
+.account-toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.account-toast-success .account-toast-icon {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.account-toast-error .account-toast-icon {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.account-toast-info .account-toast-icon {
+  background: #e0f2fe;
+  color: #3b82f6;
+}
+
+.account-toast-warning .account-toast-icon {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.account-toast-message {
+  flex: 1;
+  font-size: 14px;
+  color: var(--account-gray-800);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.account-toast-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--account-gray-500);
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.account-toast-close:hover {
+  background: var(--account-gray-100);
+  color: var(--account-gray-800);
+}
+
+/* Progress bar for auto-dismiss */
+.account-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  animation: account-toast-progress 4s linear forwards;
+}
+
+.account-toast-success .account-toast-progress {
+  background: #10b981;
+}
+
+.account-toast-error .account-toast-progress {
+  background: #ef4444;
+}
+
+.account-toast-info .account-toast-progress {
+  background: #3b82f6;
+}
+
+.account-toast-warning .account-toast-progress {
+  background: #f59e0b;
+}
+
+@keyframes account-toast-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* For multiple toasts - stacking */
+.account-toast-notification:nth-child(2) {
+  top: 90px;
+}
+
+.account-toast-notification:nth-child(3) {
+  top: 160px;
+}
+
+/* Mobile toast adjustments */
+@media (max-width: 768px) {
+  .account-toast-container {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: 0;
+    top: 10px;
+  }
+  
+  .account-toast-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: 0;
+    width: calc(100% - 20px);
+  }
+  
+  .account-toast-notification:nth-child(2) {
+    top: 80px;
+  }
+  
+  .account-toast-notification:nth-child(3) {
+    top: 150px;
+  }
+}
+
+/* ========================================
+   ACCOUNT TOAST NOTIFICATIONS - DARK MODE
+   ======================================== */
+
+.dark-mode .account-toast-notification {
+  background: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .account-toast-message {
+  color: #f9fafb;
+}
+
+.dark-mode .account-toast-success .account-toast-icon {
+  background: #065f46;
+  color: #34d399;
+}
+
+.dark-mode .account-toast-error .account-toast-icon {
+  background: #7f1d1d;
+  color: #f87171;
+}
+
+.dark-mode .account-toast-info .account-toast-icon {
+  background: #1e3a8a;
+  color: #60a5fa;
+}
+
+.dark-mode .account-toast-warning .account-toast-icon {
+  background: #78350f;
+  color: #fbbf24;
+}
+
+.dark-mode .account-toast-close {
+  color: #9ca3af;
+}
+
+.dark-mode .account-toast-close:hover {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.dark-mode .account-toast-progress {
+  background: linear-gradient(to right, #059669, #2563eb, #dc2626);
+}
+
+/* Override the specific color backgrounds with the gradient for dark mode */
+.dark-mode .account-toast-success .account-toast-progress,
+.dark-mode .account-toast-error .account-toast-progress,
+.dark-mode .account-toast-info .account-toast-progress,
+.dark-mode .account-toast-warning .account-toast-progress {
+  background: linear-gradient(to right, #059669, #2563eb, #dc2626);
+}
+
+/* For multiple toasts in dark mode */
+.dark-mode .account-toast-notification:nth-child(2) {
+  top: 90px;
+}
+
+.dark-mode .account-toast-notification:nth-child(3) {
+  top: 160px;
+}
+
+/* Mobile adjustments for dark mode */
+@media (max-width: 768px) {
+  .dark-mode .account-toast-container {
+    right: 10px;
+    left: 10px;
+  }
+  
+  .dark-mode .account-toast-notification:nth-child(2) {
+    top: 80px;
+  }
+  
+  .dark-mode .account-toast-notification:nth-child(3) {
+    top: 150px;
+  }
+}
+
+
+
+

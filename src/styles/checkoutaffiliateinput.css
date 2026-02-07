@@ -1,0 +1,262 @@
+/* src/styles/checkoutaffiliateinput.css */
+
+/* Affiliate Input Section */
+.checkout-affiliate-input-section {
+  margin-bottom: var(--space-lg);
+}
+
+.checkout-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.checkout-section-header h4 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.checkout-section-header h4 svg {
+  color: var(--primary-color);
+}
+
+.checkout-info-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-info-btn:hover {
+  color: var(--primary-color);
+  background: var(--primary-lighter);
+}
+
+/* Affiliate Info Card */
+.checkout-affiliate-info-card {
+  background: var(--primary-light);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.checkout-affiliate-info-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.checkout-info-note {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: var(--text-secondary) !important;
+}
+
+/* Affiliate Input Group */
+.checkout-affiliate-input-group {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.checkout-input-with-validation {
+  position: relative;
+  flex: 1;
+}
+
+.checkout-affiliate-input {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--gray-400);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-normal);
+  background: var(--white);
+  font-family: inherit;
+}
+
+.checkout-affiliate-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.checkout-affiliate-input.checkout-valid {
+  border-color: var(--success);
+  background-color: var(--success-light);
+}
+
+.checkout-affiliate-input.checkout-invalid {
+  border-color: var(--error);
+  background-color: var(--error-light);
+}
+
+.checkout-affiliate-input:disabled {
+  background-color: var(--gray-100);
+  cursor: not-allowed;
+}
+
+/* Validation Icons */
+.checkout-validation-icon {
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-validation-icon.checkout-valid {
+  color: var(--success);
+}
+
+.checkout-validation-icon.checkout-invalid {
+  color: var(--error);
+}
+
+/* Validation Spinner */
+.checkout-validation-spinner {
+  position: absolute;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--primary-color);
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.checkout-validation-spinner.checkout-small {
+  width: 14px;
+  height: 14px;
+  border-width: 1.5px;
+  position: static;
+  transform: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Clear Button */
+.checkout-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--white);
+  color: var(--text-secondary);
+  border: 1px solid var(--gray-400);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.checkout-clear-btn:hover {
+  background: var(--gray-100);
+  color: var(--text-primary);
+  border-color: var(--gray-500);
+}
+
+/* Validation Messages */
+.checkout-affiliate-success-message,
+.checkout-affiliate-error-message,
+.checkout-affiliate-info-message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-xs);
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-sm);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.checkout-affiliate-success-message {
+  background: var(--success-light);
+  color: var(--success-dark);
+  border-left: 3px solid var(--success);
+}
+
+.checkout-affiliate-error-message {
+  background: var(--error-light);
+  color: var(--error-dark);
+  border-left: 3px solid var(--error);
+}
+
+.checkout-affiliate-info-message {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-left: 3px solid var(--primary-color);
+}
+
+.checkout-affiliate-success-message svg {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.checkout-affiliate-error-message svg {
+  color: var(--error);
+  flex-shrink: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .checkout-affiliate-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .checkout-clear-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .checkout-affiliate-input {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Focus Accessibility */
+.checkout-affiliate-input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.checkout-info-btn:focus-visible,
+.checkout-clear-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

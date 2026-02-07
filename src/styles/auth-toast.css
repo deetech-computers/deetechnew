@@ -1,0 +1,274 @@
+/* ===== AUTH TOAST NOTIFICATIONS ===== */
+/* Container for managing multiple toast positions */
+.auth-toast-container {
+  position: fixed;
+  top: 90px; /* Position below navbar (70px) with 20px margin */
+  right: 20px;
+  z-index: 1000; /* Below navbar dropdowns but above page content */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none; /* Allow clicks to pass through container */
+  max-width: 400px;
+  min-width: 300px;
+}
+
+/* Individual toast notification */
+.auth-toast-notification {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+  animation: auth-toast-slideInRight 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  min-width: 300px;
+  pointer-events: auto; /* Enable clicks on the toast itself */
+  position: relative;
+  z-index: 1001; /* Individual toasts have higher z-index than container */
+}
+
+/* Animation for toast entrance */
+@keyframes auth-toast-slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation for toast exit */
+@keyframes auth-toast-slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Class to apply when toast is exiting */
+.auth-toast-exiting {
+  animation: auth-toast-slideOutRight 0.3s ease forwards;
+}
+
+/* Toast content layout */
+.auth-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Icon styling */
+.auth-toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Success toast styles */
+.auth-toast-notification.success .auth-toast-icon {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #059669;
+}
+
+/* Error toast styles */
+.auth-toast-notification.error .auth-toast-icon {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  color: #dc2626;
+}
+
+/* Info toast styles */
+.auth-toast-notification.info .auth-toast-icon {
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #2563eb;
+}
+
+/* Warning toast styles */
+.auth-toast-notification.warning .auth-toast-icon {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #d97706;
+}
+
+/* Toast message text */
+.auth-toast-message {
+  flex: 1;
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Close button */
+.auth-toast-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.auth-toast-close:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Progress bar */
+.auth-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.8;
+  transform-origin: left;
+  animation: auth-toast-progress 5s linear forwards;
+  z-index: 1;
+}
+
+@keyframes auth-toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ===== STACKING ORDER FOR MULTIPLE TOASTS ===== */
+/* First toast - highest position */
+.auth-toast-notification:nth-child(1) {
+  margin-top: 0;
+  z-index: 1003;
+}
+
+/* Second toast - lower position */
+.auth-toast-notification:nth-child(2) {
+  margin-top: -10px;
+  transform: scale(0.98);
+  z-index: 1002;
+}
+
+/* Third toast - lowest position */
+.auth-toast-notification:nth-child(3) {
+  margin-top: -20px;
+  transform: scale(0.96);
+  z-index: 1001;
+}
+
+/* More than 3 toasts - hide them */
+.auth-toast-notification:nth-child(n+4) {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .auth-toast-container {
+    top: 80px; /* Position below mobile navbar (60px) with 20px margin */
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: 0;
+  }
+  
+  .auth-toast-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: 0;
+    width: calc(100% - 20px);
+  }
+  
+  /* Reset stacking for mobile - vertical layout instead of overlay */
+  .auth-toast-notification:nth-child(1) {
+    margin-top: 0;
+    transform: none;
+  }
+  
+  .auth-toast-notification:nth-child(2) {
+    margin-top: 10px;
+    transform: none;
+  }
+  
+  .auth-toast-notification:nth-child(3) {
+    margin-top: 10px;
+    transform: none;
+  }
+  
+  .auth-toast-notification:nth-child(n+4) {
+    margin-top: 10px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+/* ===== DARK MODE ===== */
+.dark-mode .auth-toast-notification {
+  background: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .auth-toast-message {
+  color: #f9fafb;
+}
+
+.dark-mode .auth-toast-notification.success .auth-toast-icon {
+  background: linear-gradient(135deg, #065f46, #047857);
+  color: #34d399;
+}
+
+.dark-mode .auth-toast-notification.error .auth-toast-icon {
+  background: linear-gradient(135deg, #7f1d1d, #991b1b);
+  color: #f87171;
+}
+
+.dark-mode .auth-toast-notification.info .auth-toast-icon {
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  color: #60a5fa;
+}
+
+.dark-mode .auth-toast-notification.warning .auth-toast-icon {
+  background: linear-gradient(135deg, #78350f, #92400e);
+  color: #fbbf24;
+}
+
+.dark-mode .auth-toast-close {
+  color: #9ca3af;
+}
+
+.dark-mode .auth-toast-close:hover {
+  background: #374151;
+  color: #f9fafb;
+}

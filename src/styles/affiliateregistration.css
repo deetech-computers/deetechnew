@@ -1,0 +1,829 @@
+/* Affiliate Registration Styles */
+.affiliate-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.auth-required {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--gray-50);
+  border-radius: 16px;
+  border: 2px dashed var(--gray-300);
+}
+
+.auth-required svg {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.auth-required h3 {
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.auth-required p {
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Registration Form Styles */
+.affiliate-registration {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.registration-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.registration-header svg {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.registration-header h3 {
+  color: var(--gray-900);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.registration-header p {
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.affiliate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 0.95rem;
+}
+
+.form-group label svg {
+  color: var(--primary-color);
+}
+
+.form-group input {
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--white);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input:invalid:not(:focus) {
+  border-color: var(--error);
+}
+
+.form-group small {
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.terms-notice {
+  padding: 1rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.terms-notice small {
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+/* Success State Styles */
+.affiliate-success {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.success-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.success-header h3 {
+  color: var(--gray-900);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.affiliate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid var(--primary-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.info-card h4 {
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.code-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--primary-light);
+}
+
+.affiliate-code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+}
+
+.copy-btn {
+  background: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.info-card small {
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.affiliate-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.stat {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.affiliate-instructions {
+  background: var(--gray-50);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid var(--success);
+}
+
+.affiliate-instructions h5 {
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.affiliate-instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.affiliate-instructions li {
+  padding: 0.5rem 0;
+  color: var(--gray-700);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.affiliate-instructions li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--success);
+  font-weight: bold;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  color: var(--white);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  min-height: 54px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.affiliate-registration,
+.affiliate-success {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .affiliate-section {
+    padding: 1rem;
+  }
+
+  .affiliate-registration,
+  .affiliate-success {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .registration-header h3,
+  .success-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .affiliate-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat {
+    padding: 1.25rem 1rem;
+  }
+
+  .code-display {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .affiliate-code {
+    font-size: 1.25rem;
+  }
+
+  .btn-large {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .affiliate-registration,
+  .affiliate-success {
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  .registration-header h3,
+  .success-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .form-group input {
+    padding: 0.75rem;
+  }
+
+  .info-card {
+    padding: 1.25rem;
+  }
+
+  .affiliate-instructions {
+    padding: 1.25rem;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .affiliate-registration,
+  .affiliate-success {
+    background: var(--gray-800);
+    border-color: var(--gray-700);
+  }
+
+  .auth-required {
+    background: var(--gray-800);
+    border-color: var(--gray-600);
+  }
+
+  .form-group input {
+    background: var(--gray-900);
+    border-color: var(--gray-600);
+    color: var(--text-primary);
+  }
+
+  .form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+
+  .terms-notice {
+    background: var(--gray-700);
+    border-left-color: var(--primary-color);
+  }
+
+  .info-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    border-color: var(--primary-color);
+  }
+
+  .code-display {
+    background: var(--gray-700);
+    border-color: var(--primary-light);
+  }
+
+  .stat {
+    background: var(--gray-700);
+    border-color: var(--gray-600);
+  }
+
+  .affiliate-instructions {
+    background: var(--gray-700);
+    border-left-color: var(--success);
+  }
+}
+
+/* Enhanced Accessibility */
+.form-group input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible,
+.copy-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading State */
+.btn:disabled {
+  position: relative;
+}
+
+.btn:disabled::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success Animation for Copy */
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+/* Pulse animation for new affiliates */
+.affiliate-success {
+  animation: fadeIn 0.6s ease-out, pulseSuccess 2s ease-in-out;
+}
+
+@keyframes pulseSuccess {
+  0%, 100% { box-shadow: var(--shadow-lg); }
+  50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0.1); }
+}
+
+
+/* ========================================
+   AFFILIATE REGISTRATION DARK MODE
+   ======================================== */
+
+.dark-mode {
+  /* Colors - Adjusted for Dark Mode */
+  --affiliate-section-bg: #0f172a;
+  --affiliate-white: #1e293b;
+  --affiliate-gray-50: #0f172a;
+  --affiliate-gray-100: #1e293b;
+  --affiliate-gray-200: #334155;
+  --affiliate-gray-300: #475569;
+  --affiliate-gray-400: #64748b;
+  --affiliate-gray-500: #94a3b8;
+  --affiliate-gray-600: #cbd5e1;
+  --affiliate-gray-700: #e2e8f0;
+  --affiliate-gray-800: #f1f5f9;
+  --affiliate-gray-900: #f8fafc;
+  --affiliate-primary-color: #3b82f6;
+  --affiliate-primary-dark: #2563eb;
+  --affiliate-primary-light: #60a5fa;
+  --affiliate-success: #10b981;
+  --affiliate-error: #ef4444;
+}
+
+/* ===== AFFILIATE SECTION ===== */
+.dark-mode .affiliate-section {
+  background: var(--affiliate-section-bg);
+}
+
+.dark-mode .auth-required {
+  background: var(--affiliate-gray-100);
+  border-color: var(--affiliate-gray-300);
+}
+
+.dark-mode .auth-required h3 {
+  color: var(--affiliate-gray-800);
+}
+
+.dark-mode .auth-required p {
+  color: var(--affiliate-gray-600);
+}
+
+/* ===== REGISTRATION FORM ===== */
+.dark-mode .affiliate-registration {
+  background: var(--affiliate-gray-100);
+  border-color: var(--affiliate-gray-300);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .registration-header h3 {
+  color: var(--affiliate-gray-900);
+}
+
+.dark-mode .registration-header p {
+  color: var(--affiliate-gray-600);
+}
+
+.dark-mode .form-group label {
+  color: var(--affiliate-gray-700);
+}
+
+.dark-mode .form-group input {
+  background: var(--affiliate-gray-50);
+  border-color: var(--affiliate-gray-400);
+  color: var(--affiliate-gray-700);
+}
+
+.dark-mode .form-group input:focus {
+  border-color: var(--affiliate-primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.dark-mode .form-group input:invalid:not(:focus) {
+  border-color: var(--affiliate-error);
+}
+
+.dark-mode .form-group small {
+  color: var(--affiliate-gray-500);
+}
+
+.dark-mode .terms-notice {
+  background: var(--affiliate-gray-50);
+  border-left-color: var(--affiliate-primary-color);
+}
+
+.dark-mode .terms-notice small {
+  color: var(--affiliate-gray-600);
+}
+
+/* ===== SUCCESS STATE ===== */
+.dark-mode .affiliate-success {
+  background: var(--affiliate-gray-100);
+  border-color: var(--affiliate-gray-300);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .success-header h3 {
+  color: var(--affiliate-gray-900);
+}
+
+.dark-mode .info-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  border-color: var(--affiliate-primary-light);
+}
+
+.dark-mode .info-card h4 {
+  color: var(--affiliate-gray-800);
+}
+
+.dark-mode .code-display {
+  background: var(--affiliate-gray-50);
+  border-color: var(--affiliate-primary-light);
+}
+
+.dark-mode .affiliate-code {
+  color: var(--affiliate-primary-color);
+}
+
+.dark-mode .copy-btn {
+  background: var(--affiliate-primary-color);
+  color: var(--affiliate-gray-900);
+}
+
+.dark-mode .copy-btn:hover {
+  background: var(--affiliate-primary-dark);
+}
+
+.dark-mode .info-card small {
+  color: var(--affiliate-gray-600);
+}
+
+.dark-mode .affiliate-stats {
+  background: transparent;
+}
+
+.dark-mode .stat {
+  background: var(--affiliate-gray-50);
+  border-color: var(--affiliate-gray-300);
+}
+
+.dark-mode .stat:hover {
+  border-color: var(--affiliate-primary-color);
+}
+
+.dark-mode .stat-label {
+  color: var(--affiliate-gray-600);
+}
+
+.dark-mode .stat-value {
+  color: var(--affiliate-primary-color);
+}
+
+.dark-mode .affiliate-instructions {
+  background: var(--affiliate-gray-50);
+  border-left-color: var(--affiliate-success);
+}
+
+.dark-mode .affiliate-instructions h5 {
+  color: var(--affiliate-gray-800);
+}
+
+.dark-mode .affiliate-instructions li {
+  color: var(--affiliate-gray-700);
+}
+
+/* ===== BUTTON STYLES ===== */
+.dark-mode .btn {
+  background: var(--affiliate-primary-color);
+  border-color: var(--affiliate-primary-color);
+  color: var(--affiliate-gray-900);
+}
+
+.dark-mode .btn:hover {
+  background: var(--affiliate-primary-dark);
+  border-color: var(--affiliate-primary-dark);
+}
+
+.dark-mode .btn:disabled {
+  background: var(--affiliate-gray-300);
+  border-color: var(--affiliate-gray-300);
+}
+
+/* ===== ANIMATIONS ===== */
+.dark-mode .affiliate-success {
+  animation: fadeIn 0.6s ease-out, pulseSuccess 2s ease-in-out;
+}
+
+@keyframes pulseSuccess {
+  0%, 100% { 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.2); 
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .dark-mode .affiliate-registration,
+  .dark-mode .affiliate-success {
+    background: var(--affiliate-gray-100);
+    border-color: var(--affiliate-gray-300);
+  }
+
+  .dark-mode .stat {
+    background: var(--affiliate-gray-50);
+  }
+
+  .dark-mode .code-display {
+    background: var(--affiliate-gray-50);
+  }
+}
+
+@media (max-width: 480px) {
+  .dark-mode .affiliate-registration,
+  .dark-mode .affiliate-success {
+    background: var(--affiliate-gray-100);
+    border-color: var(--affiliate-gray-300);
+  }
+}
+
+/* ===== ENHANCED ACCESSIBILITY ===== */
+.dark-mode .form-group input:focus-visible {
+  outline: 2px solid var(--affiliate-primary-color);
+  outline-offset: 2px;
+}
+
+.dark-mode .btn:focus-visible,
+.dark-mode .copy-btn:focus-visible {
+  outline: 2px solid var(--affiliate-primary-color);
+  outline-offset: 2px;
+}
+
+/* ===== LOADING STATE ===== */
+.dark-mode .btn:disabled {
+  background: var(--affiliate-gray-300);
+  border-color: var(--affiliate-gray-300);
+  color: var(--affiliate-gray-600);
+}
+
+.dark-mode .btn:disabled::after {
+  border-top-color: var(--affiliate-gray-600);
+}
+
+/* ===== SUCCESS ANIMATION FOR COPY ===== */
+.dark-mode .copy-btn:active {
+  transform: scale(0.95);
+}
+
+/* Additional dark mode enhancements */
+.dark-mode {
+  /* Ensure text colors are properly inverted */
+  color: var(--affiliate-gray-700);
+}
+
+.dark-mode ::placeholder {
+  color: var(--affiliate-gray-500);
+}
+
+/* Form validation styling */
+.dark-mode .form-group input:required:valid {
+  border-color: var(--affiliate-success);
+}
+
+.dark-mode .form-group input:required:valid + small {
+  color: var(--affiliate-success);
+}
+
+/* Success message styling */
+.dark-mode .success-icon {
+  color: var(--affiliate-success);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Info card additional styling */
+.dark-mode .info-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Status indicators */
+.dark-mode .status-indicator {
+  background: var(--affiliate-gray-200);
+  color: var(--affiliate-gray-800);
+}
+
+.dark-mode .status-indicator.active {
+  background: var(--affiliate-success);
+  color: var(--affiliate-gray-900);
+}
+
+/* Tooltip styling */
+.dark-mode .tooltip {
+  background: var(--affiliate-gray-300);
+  color: var(--affiliate-gray-900);
+  border: 1px solid var(--affiliate-gray-400);
+}
+
+.dark-mode .tooltip::before {
+  border-top-color: var(--affiliate-gray-300);
+}
