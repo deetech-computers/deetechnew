@@ -589,16 +589,12 @@ const Account = () => {
 
     try {
       await supabase.auth.refreshSession();
-      const { data } = await supabase.auth.getSession();
-      if (!data?.session) {
+      const sessionResponse = await supabase.auth.getSession();
+      const sessionData = sessionResponse?.data;
+      if (!sessionData?.session) {
         showToast('Session expired. Please sign in again to update your profile.', 'warning');
         return;
       }
-      console.log('🔐 Session user:', {
-        id: data.session.user?.id,
-        email: data.session.user?.email
-      });
-      console.log('🧾 Target profile id:', user.id);
     } catch (sessionError) {
       console.warn('Session check failed:', sessionError);
       showToast('Unable to verify session. Please sign in again.', 'warning');
@@ -637,30 +633,19 @@ const Account = () => {
       
       console.log('💾 Updating database only...', updateData);
       
-      const { error: dbError } = await supabase
-        .from('users')
-        .update(updateData)
-        .eq('id', user.id);
+      const { error: rpcError } = await supabase.rpc('update_user_profile', {
+        p_user_id: user.id,
+        p_first_name: updateData.first_name,
+        p_last_name: updateData.last_name,
+        p_phone: updateData.phone,
+        p_address: updateData.address,
+        p_region: updateData.region,
+        p_city: updateData.city
+      });
 
-      if (dbError) {
-        console.error('❌ Database update error:', dbError);
-        
-        // Try upsert as fallback
-        console.log('🔄 Trying upsert as fallback...');
-        const { error: upsertError } = await supabase
-          .from('users')
-          .upsert({
-            id: user.id,
-            email: user.email,
-            ...updateData,
-            role: userRole,
-            is_active: true
-          }, { onConflict: 'id' });
-
-        if (upsertError) {
-          console.error('❌ Upsert also failed:', upsertError);
-          throw upsertError;
-        }
+      if (rpcError) {
+        console.error('❌ RPC update error:', rpcError);
+        throw rpcError;
       }
       
       console.log('✅ Database updated successfully');
@@ -1159,7 +1144,7 @@ const Account = () => {
                   <Settings size={24} />
                   <h2>Personal Information</h2>
                 </div>
-                
+
                 <form onSubmit={handleSaveProfile} className="account-profile-form" noValidate>
                   <div className="account-form-row">
                     <div className="account-form-group">
