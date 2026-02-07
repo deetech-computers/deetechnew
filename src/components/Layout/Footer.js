@@ -448,15 +448,5 @@ const Footer = () => {
   );
 };
 
-// PropTypes for type checking
-Footer.propTypes = {
-  // Add any props here if needed
-};
-
-// Default props
-Footer.defaultProps = {
-  // Add any default props here
-};
-
 // Performance optimization
 export default React.memo(Footer);
