@@ -588,6 +588,7 @@ const Account = () => {
     }
 
     try {
+      await supabase.auth.refreshSession();
       const { data } = await supabase.auth.getSession();
       if (!data?.session) {
         showToast('Session expired. Please sign in again to update your profile.', 'warning');
