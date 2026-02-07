@@ -586,6 +586,18 @@ const Account = () => {
       console.log('❌ Already saving or no user');
       return;
     }
+
+    try {
+      const { data } = await supabase.auth.getSession();
+      if (!data?.session) {
+        showToast('Session expired. Please sign in again to update your profile.', 'warning');
+        return;
+      }
+    } catch (sessionError) {
+      console.warn('Session check failed:', sessionError);
+      showToast('Unable to verify session. Please sign in again.', 'warning');
+      return;
+    }
     
     if (!validateForm()) {
       console.log('❌ Form validation failed:', errors);
