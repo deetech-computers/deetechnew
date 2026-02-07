@@ -594,6 +594,11 @@ const Account = () => {
         showToast('Session expired. Please sign in again to update your profile.', 'warning');
         return;
       }
+      console.log('🔐 Session user:', {
+        id: data.session.user?.id,
+        email: data.session.user?.email
+      });
+      console.log('🧾 Target profile id:', user.id);
     } catch (sessionError) {
       console.warn('Session check failed:', sessionError);
       showToast('Unable to verify session. Please sign in again.', 'warning');
